@@ -1,0 +1,129 @@
+<html>
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>
+   11. 평가 시스템 검증 및 품질 관리
+  </title>
+ </head>
+ <body>
+  <article class="page sans" id="1dd66d03-70c6-80c2-ae62-dcb940822537">
+   <header>
+    <h1 class="page-title">
+     11. 평가 시스템 검증 및 품질 관리
+    </h1>
+    <p class="page-description">
+    </p>
+   </header>
+   <div class="page-body">
+    <h2 class="" id="1de66d03-70c6-8030-8616-c6f33da91c37">
+     11-1. 타당성과 신뢰성 검증 방법
+    </h2>
+    <p class="" id="1de66d03-70c6-80dd-98c0-d4425af54872">
+     AI 기반 기사 품질 평가 시스템의 신뢰성 확보를 위한 다면적 검증 체계
+    </p>
+    <ul class="bulleted-list" id="1de66d03-70c6-80da-8f07-f662d113eeb2">
+     <li style="list-style-type:disc">
+      <strong>
+       골드 스탠다드 데이터셋 구축
+      </strong>
+      : 다양한 전문가 패널이 500-1,000개 기사를 심층 평가한 벤치마크 데이터 확보
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8026-842b-c5f14610ceb6">
+     <li style="list-style-type:disc">
+      <strong>
+       역방향 검증 테스트
+      </strong>
+      : 전문가들에게 AI 평가 결과를 블라인드 검증받아 상관관계 분석
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8091-8b7a-c6d612eb321c">
+     <li style="list-style-type:disc">
+      <strong>
+       계층적 교차 검증
+      </strong>
+      : 개별 지표부터 종합 점수까지 단계별 검증으로 오차 발생 지점 식별
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80c6-83e7-c0796d4fbf02">
+     <li style="list-style-type:disc">
+      <strong>
+       공개 도전 과제(Public Challenge)
+      </strong>
+      : 일반 사용자나 언론사가 시스템 한계를 시험할 기회 제공
+     </li>
+    </ul>
+    <h2 class="" id="1de66d03-70c6-8033-9a9c-c4d9d0cece7c">
+     11-2. 오탐지와 미탐지 문제 최소화 접근법
+    </h2>
+    <p class="" id="1de66d03-70c6-80b9-a51b-f44d69e23677">
+     평가 정확도를 높이기 위한 다층적 접근법:
+    </p>
+    <ul class="bulleted-list" id="1de66d03-70c6-80f8-a450-fb1bd0efbad7">
+     <li style="list-style-type:disc">
+      <strong>
+       규칙 기반과 기계학습 하이브리드
+      </strong>
+      : 확실한 패턴은 정규표현식으로, 맥락 의존적 판단은 딥러닝 모델로 처리
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80a2-aa41-f8ba24d95902">
+     <li style="list-style-type:disc">
+      <strong>
+       앙상블 기법 도입
+      </strong>
+      : 형태소 분석, BERT 기반 시퀀스 라벨링, 구문 분석 기반 접근을 병행하고 다수결이나 가중 투표로 최종 판단
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-802d-aa0e-c5aec5d59881">
+     <li style="list-style-type:disc">
+      <strong>
+       맥락 윈도우 최적화
+      </strong>
+      : 한국어 문장 요소 생략 특성을 고려해 문단 단위 맥락 파악
+     </li>
+    </ul>
+    <h2 class="" id="1de66d03-70c6-80c0-9e0f-e86127c73755">
+     11-3. 지속적 개선 메커니즘
+    </h2>
+    <p class="" id="1de66d03-70c6-8031-9f7e-d811b7f366c8">
+     평가 시스템의 품질을 지속적으로 관리하는 방법:
+    </p>
+    <ul class="bulleted-list" id="1de66d03-70c6-8036-8069-d5383bf5f941">
+     <li style="list-style-type:disc">
+      <strong>
+       체계적 피드백 처리 시스템
+      </strong>
+      : 문제 패턴별 동의/비동의 버튼, 자유 형식 피드백 수집
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-802c-91a5-fe303e53d65a">
+     <li style="list-style-type:disc">
+      <strong>
+       오류 자동 분류
+      </strong>
+      : 거짓 양성(맥락 미고려, 분야별 특수성), 거짓 음성(새로운 패턴, 복합적 문제) 등으로 분류
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80e0-af9f-fd18ee48cb5b">
+     <li style="list-style-type:disc">
+      <strong>
+       3단계 개선 파이프라인
+      </strong>
+      : 단기 규칙 수정(1-3일), 중기 파라미터 조정(1-2주), 장기 재설계(1-2개월)
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-800a-8b08-fe8c410056dc">
+     <li style="list-style-type:disc">
+      <strong>
+       능동적 학습(Active Learning)
+      </strong>
+      : 모델이 불확실한 예측을 한 샘플 우선 검토로 효율적 개선
+     </li>
+    </ul>
+   </div>
+  </article>
+  <span class="sans" style="font-size:14px;padding-top:2em">
+  </span>
+ </body>
+</html>
