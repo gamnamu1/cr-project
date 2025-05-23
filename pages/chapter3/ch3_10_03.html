@@ -1,0 +1,284 @@
+<html>
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>
+   10-3. 서비스 안정성 및 확장성
+  </title>
+ </head>
+ <body>
+  <article class="page sans" id="1dd66d03-70c6-8089-8c45-dc1f3a7b0fbe">
+   <header>
+    <h1 class="page-title">
+     10-3. 서비스 안정성 및 확장성
+    </h1>
+    <p class="page-description">
+    </p>
+   </header>
+   <div class="page-body">
+    <h2 class="" id="1de66d03-70c6-804a-b48b-e5d7491cab10">
+     10-3-1. 에러 처리 & 예외 상황 관리
+    </h2>
+    <h3 class="" id="1de66d03-70c6-8071-83cc-cca826f13496">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">입력 에러 처리</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-8087-8eb1-ebb0fff75ada">
+     <li style="list-style-type:disc">
+      잘못된 URL &rarr; "유효하지 않은 주소입니다. URL을 확인해주세요."
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80e0-b116-dc26b53c46bc">
+     <li style="list-style-type:disc">
+      텍스트 부족 &rarr; "기사가 최소 300자 이상이어야 분석이 가능합니다."
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8029-94c4-f5b6f765cc34">
+     <li style="list-style-type:disc">
+      파일 형식 오류 &rarr; "지원되지 않는 파일 형식입니다. PDF, DOCX, TXT 파일만 가능합니다."
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80b8-82fd-c444acf852d9">
+     <li style="list-style-type:disc">
+      파일 크기 초과 &rarr; "파일 크기는 10MB 이하여야 합니다."
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-8049-85ce-e3015bcdbe72">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">서버 과부하 관리</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-806b-b33c-fff9af33036c">
+     <li style="list-style-type:disc">
+      실시간 대기열 시스템: "현재 분석 대기 중입니다. 예상 소요 시간: 약 30초"
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8038-8162-d1eeff6f63cd">
+     <li style="list-style-type:disc">
+      단계별 진행 상황 표시: "기사 추출 중(25%)... 분석 중(50%)..."
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8099-b897-f2e76622fc4f">
+     <li style="list-style-type:disc">
+      임계값 초과 시: "현재 사용자가 많아 서비스 속도가 지연되고 있습니다. 잠시 후 다시 시도해주세요."
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-803f-833c-eef30a9a0e74">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">개인정보 보호 조치</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-80ae-b09a-e38e8e1bd22d">
+     <li style="list-style-type:disc">
+      업로드된 문서 보관 정책: "분석 완료 후 24시간 내 모든 원본 데이터 자동 삭제"
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8007-9368-e1ceac4b257a">
+     <li style="list-style-type:disc">
+      데이터 암호화 저장 및 접근 제한: "모든 사용자 데이터는 암호화되어 안전하게 보관됩니다."
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80de-9156-d2cc8e783cd8">
+     <li style="list-style-type:disc">
+      개인정보 최소화: 필수적인 정보만 수집하고 분석 결과와 연동
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-8012-8eca-d66f78bfd7d0">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">시스템 장애 대응</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-800c-b293-d0069e522172">
+     <li style="list-style-type:disc">
+      API 연결 실패: "외부 서비스 연결에 실패했습니다. 잠시 후 다시 시도해주세요."
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8027-8249-f1a73b44a030">
+     <li style="list-style-type:disc">
+      분석 엔진 오류: "분석 과정에서 오류가 발생했습니다. 지원팀에 자동으로 보고되었습니다."
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8045-b037-da7d17690967">
+     <li style="list-style-type:disc">
+      시스템 복구: 자동 오류 감지 및 로깅 시스템으로 신속한 문제 해결
+     </li>
+    </ul>
+    <h2 class="" id="1de66d03-70c6-805d-a109-c123918262f4">
+     10-3-2. 기술적 구현 고려사항
+    </h2>
+    <h3 class="" id="1de66d03-70c6-80f8-babf-de13a1dbc6e7">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">백엔드 처리 최적화</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-801f-b22b-f8c5448d229d">
+     <li style="list-style-type:disc">
+      병렬 처리로 여러 분석 모듈 동시 실행
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8058-ae95-d438193805df">
+     <li style="list-style-type:disc">
+      캐싱 시스템으로 자주 분석되는 URL 결과 빠르게 제공
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-804c-a3fb-c97605b44e58">
+     <li style="list-style-type:disc">
+      분석 대기열 관리로 트래픽 폭주 시에도 안정적 운영
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-809f-84fa-f34a6b0dc90a">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">프론트엔드 사용성</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-802b-a52a-d0f0b80a2c9d">
+     <li style="list-style-type:disc">
+      모바일 퍼스트 반응형 디자인으로 다양한 기기 지원
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80c6-9d9d-d5707bdc838a">
+     <li style="list-style-type:disc">
+      단계별 진행 표시로 사용자 불안감 해소
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8087-869c-c0372fa3cdbb">
+     <li style="list-style-type:disc">
+      인터랙티브 시각화로 직관적 결과 이해 지원
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-8073-a7dc-db3a9cd3fe3f">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">확장성 고려 및 미래 확장 로드맵</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-80c3-b4a6-da5d2dedd25d">
+     <li style="list-style-type:disc">
+      모듈식 아키텍처로 새로운 평가 지표 추가 용이
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-801d-a922-ea0eae78761f">
+     <li style="list-style-type:disc">
+      API 제공으로 외부 서비스 연동 가능
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8042-b125-f884f0e92de4">
+     <li style="list-style-type:disc">
+      다국어 지원 준비 (영어, 일본어 등)
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8007-a9ba-e3813fe6544d">
+     <li style="list-style-type:disc">
+      브라우저 확장 프로그램 개발 및 대량 기사 분석 기능 추가 준비
+     </li>
+    </ul>
+    <h2 class="" id="1de66d03-70c6-8009-a505-fba0702c1261">
+     10-3-3. 커뮤니티 참여 및 확산 메커니즘
+    </h2>
+    <h3 class="" id="1de66d03-70c6-8047-8516-f57e0094250b">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">결과 공유 에코시스템</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-804f-aa3e-c71aaea56923">
+     <li style="list-style-type:disc">
+      <strong>
+       맞춤형 공유 카드
+      </strong>
+      : 평가 결과를 시각적으로 요약한 이미지 카드 자동 생성
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8072-9842-f51934fbfe5b">
+     <li style="list-style-type:disc">
+      <strong>
+       인용 하이라이트
+      </strong>
+      : 기사 내 특정 문제 부분을 직접 하이라이트하여 공유
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8054-8a13-dfa56d2661cb">
+     <li style="list-style-type:disc">
+      <strong>
+       토론 포인트 생성기
+      </strong>
+      : 평가 결과 기반 토론 주제 자동 제안
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-800e-a637-cd2723fa7cde">
+     <li style="list-style-type:disc">
+      <strong>
+       비교 대시보드
+      </strong>
+      : 같은 사건을 다룬 여러 매체 기사의 품질 비교 시각화
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-805f-8a09-dc451f456a41">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">구조화된 토론 플랫폼</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-80d4-86da-e93493b7294c">
+     <li style="list-style-type:disc">
+      기사 분석 결과 페이지와 연동된 댓글 시스템
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80f5-87cc-faa00577ec57">
+     <li style="list-style-type:disc">
+      특정 품질 지표에 연결된 포인트별 토론 구조
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-807c-bcbb-fd37117e8c53">
+     <li style="list-style-type:disc">
+      건설적 토론을 위한 가이드라인 및 모더레이션
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-80b9-bfb7-fefe4c519007">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">집단지성 활용 메커니즘</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-80f3-9ee6-e1df42d33bdf">
+     <li style="list-style-type:disc">
+      <strong>
+       크라우드소싱 태깅
+      </strong>
+      : 사용자들이 AI가 놓친 문제 패턴을 직접 표시
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-800a-a9d4-cb7ef45d5cea">
+     <li style="list-style-type:disc">
+      <strong>
+       품질 지표 투표
+      </strong>
+      : 어떤 평가 지표가 더 중요한지 사용자 의견 수렴
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80e0-9e40-f9feb84162b6">
+     <li style="list-style-type:disc">
+      <strong>
+       집단 기획 분석
+      </strong>
+      : 특정 이슈에 대한 언론 보도를 시민 집단이 공동으로 분석
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-807f-ba21-ef18a8b33252">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">결과 저장 및 공유 옵션</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-80c2-825b-da9066af0fb1">
+     <li style="list-style-type:disc">
+      PDF 형식 리포트 다운로드 링크 제공
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-809d-9a70-e811620f6931">
+     <li style="list-style-type:disc">
+      공유 가능한 결과 페이지 URL 생성
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-80a4-899a-e85b7e6850d7">
+     <li style="list-style-type:disc">
+      소셜 미디어 공유 버튼 (트위터, 페이스북, 링크드인)
+     </li>
+    </ul>
+    <h3 class="" id="1de66d03-70c6-802c-9e22-eab92c7a0c41">
+     <span class="sans" style="font-size:0.95em; opacity: 0.9;">사용자 피드백 수집</span>
+    </h3>
+    <ul class="bulleted-list" id="1de66d03-70c6-807c-867b-e7a3c30cc20b">
+     <li style="list-style-type:disc">
+      "이 분석이 도움이 되었나요?" 평가 버튼
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-8081-a3c4-ca9821c3cf24">
+     <li style="list-style-type:disc">
+      분석 결과에 대한 의견 제출 폼
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1de66d03-70c6-805c-9b72-f7bbac1a1cee">
+     <li style="list-style-type:disc">
+      평가 시스템 개선을 위한 제안 수집
+     </li>
+    </ul>
+   </div>
+  </article>
+  <span class="sans" style="font-size:14px;padding-top:2em">
+  </span>
+ </body>
+</html>

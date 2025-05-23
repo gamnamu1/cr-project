@@ -1,0 +1,680 @@
+/* 콘텐츠 영역 스타일 */
+/* 콘텐츠 영역 스타일 */
+/* 나눔명조 폰트 추가 - 더 이상 사용하지 않으므로 주석 처리 
+@font-face {
+    font-family: 'Nanum Myeongjo';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Nanum Myeongjo'), local('NanumMyeongjo'),
+         url('https://fonts.gstatic.com/s/nanummyeongjo/v19/9Btx3DZF0dXLMZlywRbVRNhxy2LscnA.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  
+  @font-face {
+    font-family: 'Nanum Myeongjo';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Nanum Myeongjo Bold'), local('NanumMyeongjo-Bold'),
+         url('https://fonts.gstatic.com/s/nanummyeongjo/v19/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1A0Tco.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+*/
+
+
+.content-container {
+    background: white;
+    padding: 0.2rem 2rem 2rem 2rem; /* 상단 0.5rem, 나머지 2rem */
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* 노션 콘텐츠 스타일 통합 */
+.notion-content {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    color: rgb(55, 53, 47);
+}
+
+/* 768px 이상의 화면에서는 본문 텍스트에 Noto Serif KR 적용 */
+@media screen and (min-width: 768px) {
+    .notion-content p, 
+    .notion-content li, 
+    .notion-content blockquote {
+        font-family: 'Noto Serif KR', 'Nanum Myeongjo', 'Batang', serif;
+        line-height: 1.8;
+        letter-spacing: -0.01em;
+        /* 폰트 렌더링 개선을 위한 속성 추가 */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        /* 텍스트 깨짐 방지를 위한 속성 */
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+}
+
+.notion-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: rgb(55, 53, 47);
+}
+
+.notion-content h2 {
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: rgb(55, 53, 47);
+}
+
+.notion-content h3 {
+    font-size: 1.4em;
+    margin-top: 35px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: rgb(55, 53, 47);
+}
+
+.notion-content h3 {
+    font-size: 1.4em;
+    margin-top: 35px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: rgb(55, 53, 47);
+}
+
+/* 여기에 새 코드 추가 - 헤딩 폰트 스타일 오버라이드 */
+.notion-content h1,
+.notion-content h2,
+.notion-content h3 {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, sans-serif;
+}
+
+.toggle details h1,
+.toggle details h2,
+.toggle details h3,
+.toggle summary {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, sans-serif;
+}
+
+/* h4, h5, h6 명조체 명시적 지정 */
+@media screen and (min-width: 768px) {
+    .notion-content h4,
+    .notion-content h5,
+    .notion-content h6,
+    .toggle details h4,
+    .toggle details h5,
+    .toggle details h6 {
+        font-family: 'Noto Serif KR', 'Nanum Myeongjo', 'Batang', serif;
+    }
+}
+
+/* .notion-content h4 스타일 바로 다음 코드가 이어짐 */
+
+.notion-content h4 {
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 500; /* 조금 더 가볍게 */
+    color: rgb(55, 53, 47);
+}
+
+/* .notion-content h4 스타일 바로 다음에 아래 코드 추가 */
+.notion-content h4.section-resource-title {
+    font-size: 1.1em;
+  }
+  
+.notion-content p {
+    margin-bottom: 16px;
+    color: rgb(20, 20, 20);
+}
+
+.notion-content ul, .notion-content ol {
+    margin-bottom: 0px; /* 16px에서 0px로 변경 */
+    padding-left: 20px;
+    font-size: 15.5px; /* 폰트 크기 추가 */
+}
+
+.notion-content li {
+    margin-bottom: 2px;
+}
+
+/* 토글 리스트 스타일 변경 */
+ul.toggle {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.toggle li {
+    display: contents; /* li 태그의 박스 모델을 제거 */
+}
+
+.notion-content blockquote {
+    font-size: 0.95em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-left: 15px;
+    margin-left: 0;
+    line-height: 1.8em;
+    color: rgba(55, 53, 47, 0.8);
+    border-left: 11px solid rgb(55, 53, 47, 0.1)
+}
+
+/* 상하 여백이 축소된 인용구 스타일 */
+.notion-content blockquote.compact-quote {
+    margin-top: 0.5em; /* 기존 2em의 1/4 정도 */
+    margin-bottom: 0.5em; /* 기존 2em의 1/4 정도 */
+}
+
+.notion-content code {
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    background: rgba(135, 131, 120, 0.15);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.notion-content pre {
+    background: rgba(135, 131, 120, 0.15);
+    padding: 16px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+}
+
+.notion-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.notion-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.notion-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+.notion-content th, .notion-content td {
+    border: 1px solid rgba(55, 53, 47, 0.2);
+    padding: 8px 12px;
+}
+
+/* content.css 파일에 추가 */
+#\31 dd66d03-70c6-8047-92dc-c0701c4122b1, 
+table[id="1dd66d03-70c6-8047-92dc-c0701c4122b1"],
+#\31 dd66d03-70c6-80f9-af9f-feb904ace090,
+table[id="1dd66d03-70c6-80f9-af9f-feb904ace090"],
+#\31 dd66d03-70c6-8028-b6bc-fe6e7128a7f7, 
+table[id="1dd66d03-70c6-8028-b6bc-fe6e7128a7f7"],
+#\31 de66d03-70c6-80ed-9ee3-db15a1118854,
+table[id="1de66d03-70c6-80ed-9ee3-db15a1118854"],
+#\31 dd66d03-70c6-80d0-a48a-dbbb772d7ac6,
+table[id="1dd66d03-70c6-80d0-a48a-dbbb772d7ac6"],
+#\31 dd66d03-70c6-80d4-9575-c3725f09ca6d,
+table[id="1dd66d03-70c6-80d4-9575-c3725f09ca6d"],
+#\31 dd66d03-70c6-80d8-a23b-ea077a9d6e73,
+table[id="1dd66d03-70c6-80d8-a23b-ea077a9d6e73"],
+#\31 dd66d03-70c6-8001-b551-e5d2f1205bf8,
+table[id="1dd66d03-70c6-8001-b551-e5d2f1205bf8"] {
+  font-size: 0.9em !important;
+}
+
+.notion-content th {
+    background: rgba(55, 53, 47, 0.05);
+    font-weight: 600;
+}
+
+/* 여기 아래 추가된 내용_문제 있을 경우 삭제 권고 */
+.notion-content a {
+    color: #5D87C8; /* 더 부드러운 파란색으로 변경 */
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.notion-content a:hover {
+    color: #3A66B7; /* 호버 시 약간 더 진한 색상 */
+}
+
+
+/* 패턴 목록 스타일 - margin-bottom 제거 */
+#\31 dd66d03-70c6-8099-906d-fd20d2caa010,
+#\31 dd66d03-70c6-809d-b02e-f8d4b9f60b49,
+#\31 dd66d03-70c6-80c1-8d28-eac8f0ba038e,
+#\31 dd66d03-70c6-8016-909f-f4569a8fd561,
+#\31 dd66d03-70c6-80b5-aa60-d5c9ba3b6520,
+#\31 dd66d03-70c6-80fc-8608-f9775a57eba7,
+#\31 dd66d03-70c6-80cc-981e-dc8daf0f3920,
+#\31 dd66d03-70c6-8036-adcf-d6513a8f1fed {
+  margin-bottom: 0px !important;
+}
+
+/* 속성 선택자를 사용한 방식도 추가 (호환성 확보) */
+[id="1dd66d03-70c6-8099-906d-fd20d2caa010"],
+[id="1dd66d03-70c6-809d-b02e-f8d4b9f60b49"],
+[id="1dd66d03-70c6-80c1-8d28-eac8f0ba038e"],
+[id="1dd66d03-70c6-8016-909f-f4569a8fd561"],
+[id="1dd66d03-70c6-80b5-aa60-d5c9ba3b6520"],
+[id="1dd66d03-70c6-80fc-8608-f9775a57eba7"],
+[id="1dd66d03-70c6-80cc-981e-dc8daf0f3920"],
+[id="1dd66d03-70c6-8036-adcf-d6513a8f1fed"] {
+  margin-bottom: 0px !important;
+}
+
+/* xpattern 클래스 정의 (나중에 HTML에 클래스 추가할 경우) */
+.xpattern {
+  margin-bottom: 0px !important;
+}
+
+
+/* 로딩 및 오류 메시지 스타일 */
+.loading {
+    padding: 2rem;
+    text-align: center;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.error-content {
+    padding: 20px;
+    background-color: #ffeeee;
+    border: 1px solid #ffcccc;
+    border-radius: 5px;
+    color: #cc0000;
+    margin: 20px 0;
+}
+
+/* 환영 메시지 스타일 */
+.welcome-message {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.welcome-message h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+/* 코드 블록 스타일 - 문제 해결 */
+pre {
+    margin: 1.5em 0 !important;
+    padding: 0 !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    background-color: #282c34 !important;
+    box-sizing: border-box !important;
+}
+
+pre code, code.language-python, code.language-Python {
+    font-family: 'Roboto Mono', Consolas, 'SFMono-Regular', monospace !important;
+    display: block !important;
+    padding: 1em !important;
+    overflow-x: auto !important;
+    line-height: 1.6 !important;
+    font-size: 14px !important;
+    tab-size: 4 !important;
+    background-color: #282c34 !important;
+    color: #abb2bf !important;
+    white-space: pre !important;
+    word-wrap: normal !important;
+    letter-spacing: 0 !important;
+}
+
+/* 인라인 코드 (코드 블록 외부의 코드) */
+:not(pre) > code {
+    font-family: 'Roboto Mono', Consolas, 'SFMono-Regular', monospace !important;
+    background: rgba(135, 131, 120, 0.15) !important;
+    border-radius: 3px !important;
+    padding: 0.2em 0.4em !important;
+    font-size: 90% !important;
+    color: #eb5757 !important;
+    white-space: normal !important;
+}
+
+/* highlight.js 테마 커스터마이징 */
+.hljs {
+    display: block !important;
+    overflow-x: auto !important;
+    background: #282c34 !important;
+    color: #abb2bf !important;
+    padding: 0 !important;
+    white-space: pre !important;
+    word-spacing: normal !important;
+    tab-size: 4 !important;
+}
+
+/* 함수명 강조 */
+.hljs-title.function_, .hljs-title.function, .function_ {
+    color: #61afef !important;
+}
+
+/* 키워드 강조 (def, return, for, in 등) */
+.hljs-keyword, .keyword {
+    color: #c678dd !important;
+}
+
+/* 문자열 강조 */
+.hljs-string, .string {
+    color: #98c379 !important;
+}
+
+/* 주석 강조 */
+.hljs-comment, .comment {
+    color: #7f848e !important;
+    font-style: italic !important;
+}
+
+/* 내장 함수 및 변수 강조 */
+.hljs-built_in, .built_in {
+    color: #e6c07b !important;
+}
+
+/* 숫자 강조 */
+.hljs-number, .number {
+    color: #d19a66 !important;
+}
+
+/* 노션 코드 블록 스타일 초기화 및 재정의 */
+.notion-content pre, 
+.notion-content pre code,
+.notion-content code.language-python, 
+.notion-content code.language-Python {
+    all: unset;
+    display: block !important;
+    font-family: 'Roboto Mono', Consolas, monospace !important;
+    background: #282c34 !important;
+    color: #abb2bf !important;
+    padding: 1em !important;
+    border-radius: 6px !important;
+    overflow-x: auto !important;
+    white-space: pre !important;
+    word-wrap: normal !important;
+    line-height: 1.6 !important;
+    font-size: 14px !important;
+    tab-size: 4 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+/* highlight.js 테마 커스터마이징 (선택 사항) */
+.hljs {
+    background: #282c34 !important;
+    color: #abb2bf !important;
+}
+
+/* 함수명 강조 */
+.hljs-title.function_ {
+    color: #61afef !important;
+}
+
+/* 키워드 강조 (def, return, for, in 등) */
+.hljs-keyword {
+    color: #c678dd !important;
+}
+
+/* 문자열 강조 */
+.hljs-string {
+    color: #98c379 !important;
+}
+
+/* 주석 강조 */
+.hljs-comment {
+    color: #7f848e !important;
+    font-style: italic;
+}
+
+/* 내장 함수 및 변수 강조 */
+.hljs-built_in {
+    color: #e6c07b !important;
+}
+
+/* 숫자 강조 */
+.hljs-number {
+    color: #d19a66 !important;
+}
+
+/* 노션 코드 블록 스타일 초기화 */
+.notion-content pre, .notion-content code {
+    all: initial !important;
+    font-family: 'Roboto Mono', monospace !important;
+    background: #282c34 !important;
+}
+
+.page-title span {
+    font-size: 0.9em;
+    opacity: 0.8;
+    color: #666;
+    margin-left: 5px;
+    font-weight: 400;
+}
+
+/* 토글 내 리포트 박스 스타일 */
+.report-box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 각 리포트 유형별 스타일 차별화 */
+.toggle:nth-child(1) .report-box {
+    border-left: 5px solid #e3e3e3; /* 종합 평가 리포트 - 파란색 */
+}
+
+.toggle:nth-child(2) .report-box {
+    border-left: 5px solid #e3e3e3; /* 기사 작성자를 위한 리포트 - 녹색 */
+}
+
+.toggle:nth-child(3) .report-box {
+    border-left: 5px solid #e3e3e3; /* 학생을 위한 리포트 - 주황색 */
+}
+
+/* 토글 요소 스타일 개선 */
+.toggle summary {
+    padding: 10px 15px;
+    background-color: #f1f3f5;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.toggle summary:hover {
+    background-color: #e9ecef;
+}
+
+/* 토글 내부 제목 스타일 */
+.report-box h2:first-child {
+    margin-top: 0;
+    color: #343a40;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* 협력 제안 박스 스타일 - 2025.05.01 추가 */
+.proposal-box {
+    background-color: #f0f7ff;  /* 연한 하늘색 배경 */
+    border: 1px solid #e0e9f5;   /* 연한 테두리 */
+    border-radius: 4px;          /* 모서리 둥글게 */
+    padding: 5px 15px;          /* 내부 여백 */
+    margin: 15px 0;              /* 상하 여백 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, sans-serif;
+    line-height: 1.6;
+    color: rgb(55, 53, 47);
+    font-size: 0.95em;
+  }
+  
+  .proposal-box p {
+    margin: 0.5em 0;
+  }
+
+  /* welcome 페이지를 위한 일관된 스타일 */
+#welcome-page {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#welcome-page .page-body {
+    padding: 0.2rem 2rem 2rem 2rem;
+}
+
+/* article 요소의 일관된 처리 */
+.notion-content article {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 고딕체 클래스 - 보통 굵기 */
+.sans {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+    font-weight: 400;
+}
+
+/* 고딕체 클래스 - 굵은 굵기 */
+.sans-bold {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+    font-weight: 700;
+}
+
+/* .notion-content h3 속성 우회 상하여백 조정 */
+.compact-heading1 {
+    margin-top: 0em !important;
+}
+
+.compact-heading11 {
+    margin-top: 0.6em !important;
+    margin-bottom: 0.2em !important;
+}
+
+.compact-heading2 {
+    margin-bottom: 0em !important;
+}
+
+.compact-heading22 {
+    margin-bottom: 0.2em !important;
+}
+
+.compact-heading3 {
+    margin-top: 0em !important;
+    margin-bottom: 0em !important;
+}
+
+/* 애니메이션 텍스트를 위한 스타일 */
+.paragraph-container {
+    display: none;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  .animated-text {
+    opacity: 0 !important;  /* 초기 상태에서 반드시 투명하게 */
+    transition: opacity 1.0s ease;
+  }
+  
+  .animated-text.visible {
+    opacity: 1 !important;  /* visible 클래스가 추가될 때만 불투명하게 */
+  }
+  
+  .paragraph-container.active {
+    display: block;
+  }
+
+  .full-width-image {
+    width: 100%;
+    margin: 1.5rem 0;
+    overflow: hidden;
+  }
+  
+  .full-width-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    object-fit: cover;
+  }
+
+  .pigonhae {
+    margin-top: -0.6em !important;
+  }
+
+/* blockquote 내부 리스트 블릿 제거 */
+blockquote ul, 
+blockquote .bulleted-list {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+}
+
+blockquote li, 
+blockquote .bulleted-list li {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+/* 블릿 대신 여백 추가 (필요한 경우) */
+blockquote li:before, 
+blockquote .bulleted-list li:before {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+}
+
+.pong {
+    font-size: 0.85em !important;
+    opacity: 0.7 !important;
+}
+
+.editors_note {
+    padding: 5px 35px;
+    padding-left: 2em !important;
+    margin: 20px 0 40px;
+    border-left: 9px solid rgb(55, 53, 47, 0.1) !important;
+    border-right: 9px solid rgb(55, 53, 47, 0.1) !important;
+    border-radius: 32px;
+    background: none;
+    font-weight: 100;
+    font-size:1em !important;
+}
+
+/* 일반 텍스트처럼 보이는 링크 스타일 */
+.notion-content a.text-link,
+.text-link {
+    color: inherit !important;
+    text-decoration: none !important;
+    transition: none !important;
+}
+
+.notion-content a.text-link:hover,
+.text-link:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+}
