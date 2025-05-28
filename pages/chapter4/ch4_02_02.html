@@ -1,0 +1,688 @@
+<html>
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>
+   2-2. 웹앱 정보구조 설계 제안. 페이지와 메뉴 구성
+  </title>
+ </head>
+ <body>
+  <article class="page sans" id="1dd66d03-70c6-80a3-ba29-ce3ed6ed1832">
+   <header>
+    <h1 class="page-title">
+     2-2. 웹앱 정보구조 설계 제안. 페이지와 메뉴 구성
+    </h1>
+    <p class="page-description">
+    </p>
+   </header>
+   <div class="page-body">
+    <p class="" id="1dd66d03-70c6-80b1-a6c1-cca41fa38c53">
+     1단계(프롬프트 템플릿 허브), 2단계(상용 AI서비스 API 연결)를 지나
+    </p>
+    <p class="" id="1dd66d03-70c6-8055-aa32-d1a8b2e56619">
+     오픈소스 LLM을 활용한 독립 웹앱 구축을 전제로&hellip; 메뉴와 구성요소를 제안함.
+    </p>
+    <p class="" id="1dd66d03-70c6-808d-a03d-ef3ae67528b3">
+    </p>
+    <h1 class="" id="1dd66d03-70c6-8073-897f-c9c0a21ccd17">
+     웹앱 페이지와 메뉴 구성
+    </h1>
+    <h2 class="" id="1dd66d03-70c6-807b-a1f2-df74748404e5">
+     1. 웹앱 정보구조<span style="font-size:0.8em; font-weight:400; opacity:0.8;">(IA, Information Architecture)</span> 설계
+    </h2>
+    <p class="" id="1dd66d03-70c6-809d-a62c-c8ded9c67b95">
+     CR 플랫폼은 뉴스 기사의 품질을 정량적으로 평가하고, 시민들이 언론을 감시하고 견제할 수 있도록 지원하는 것을 목적으로 합니다. 아래는 이러한 목적을 달성하기 위한 사용자 중심의 정보구조입니다.
+    </p>
+    <h3 class="" id="1dd66d03-70c6-8058-bc34-c9640dc69921">
+        <span class="sans">핵심 사용자 시나리오</span>
+    </h3>
+    <ol class="numbered-list" id="1dd66d03-70c6-80b2-936e-f8873d755e65" start="1" type="1">
+     <li>
+      발견
+      <strong>
+       :
+      </strong>
+      사용자가 의심스러운/문제적인 기사를 발견
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8046-a2ad-e55618bfe53b" start="2" type="1">
+     <li>
+      평가
+      <strong>
+       :
+      </strong>
+      플랫폼에 접속하여 기사 URL 또는 텍스트 입력
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8075-9ee5-fb68b2530eb0" start="3" type="1">
+     <li>
+      분석
+      <strong>
+       :
+      </strong>
+      AI 기반 다차원 매트릭스 평가 결과 확인
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-804c-8ca2-ec3b453ab57a" start="4" type="1">
+     <li>
+      학습
+      <strong>
+       :
+      </strong>
+      평가 결과를 통해 기사의 문제점 이해
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-80d0-8518-e274711ee7f4" start="5" type="1">
+     <li>
+      공유
+      <strong>
+       :
+      </strong>
+      평가 결과를 SNS나 이메일로 공유
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8017-9dee-de4b9c461618" start="6" type="1">
+     <li>
+      토론
+      <strong>
+       :
+      </strong>
+      커뮤니티에서 다른 사용자들과 논의(선택 사항, 토론 공간을 플랫폼 내부에 둘지, 외부에 별도 커뮤니티를 활용할지 협의 후 결정)
+     </li>
+    </ol>
+    <p class="" id="1dd66d03-70c6-80de-92e5-d11f6e3f3f54">
+    </p>
+    <h3 class="" id="1dd66d03-70c6-80df-ac85-d88a37754fba">
+        <span class="sans">정보구조도</span>
+    </h3>
+    <script crossorigin="anonymous" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js">
+    </script>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" referrerpolicy="no-referrer" rel="stylesheet">
+    <pre class="code" id="1dd66d03-70c6-80c2-b25f-db884643ab30"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">홈 랜딩페이지
+&boxvr;&boxh;&boxh; 기사 평가 (메인 기능)
+&boxv;   &boxvr;&boxh;&boxh; URL 입력
+&boxv;   &boxvr;&boxh;&boxh; 텍스트 직접 입력
+&boxv;   &boxvr;&boxh;&boxh; 파일 업로드
+&boxv;   &boxur;&boxh;&boxh; 진행 상태 투명 표시
+&boxvr;&boxh;&boxh; 평가 결과 (메인 기능)
+&boxv;   &boxvr;&boxh;&boxh; 종합 품질 점수
+&boxv;   &boxvr;&boxh;&boxh; 8개 차원별 레이더 차트
+&boxv;   &boxvr;&boxh;&boxh; 기사 하이라이트 (문제 표현 색상 코드화)
+&boxv;   &boxvr;&boxh;&boxh; 개선 제안
+&boxv;   &boxur;&boxh;&boxh; 결과 공유 도구
+&boxvr;&boxh;&boxh; 커뮤니티(내부/외부 선택사항)
+&boxv;   &boxvr;&boxh;&boxh; 최근 평가된 기사
+&boxv;   &boxvr;&boxh;&boxh; 토론 게시판 (주제/언론사별)
+&boxv;   &boxvr;&boxh;&boxh; 문제적 보도 사례 아카이브
+&boxv;   &boxur;&boxh;&boxh; 집단 기획 분석 (이슈별 집중 모니터링)
+&boxvr;&boxh;&boxh; 미디어 리터러시 센터(내부/외부 선택사항)
+&boxv;   &boxvr;&boxh;&boxh; 기사 비판적 읽기 가이드
+&boxv;   &boxvr;&boxh;&boxh; 문제적 보도 유형 설명
+&boxv;   &boxvr;&boxh;&boxh; 실전 사례 분석
+&boxv;   &boxur;&boxh;&boxh; 인터랙티브 교육 자료
+&boxvr;&boxh;&boxh; 플랫폼 네트워크
+&boxv;   &boxvr;&boxh;&boxh; 연계 미디어 비평 플랫폼 소개
+&boxv;   &boxvr;&boxh;&boxh; 자매 플랫폼 개발 지원 자료
+&boxv;   &boxvr;&boxh;&boxh; API 문서 및 개발자 리소스
+&boxv;   &boxur;&boxh;&boxh; 확장 프로그램 다운로드
+&boxur;&boxh;&boxh; 프로젝트 정보
+    &boxvr;&boxh;&boxh; CR 프로젝트 소개
+    &boxvr;&boxh;&boxh; 평가 방법론 설명
+    &boxur;&boxh;&boxh; FAQ</code></pre>
+    <p style="margin-bottom:3em;"></p>
+    <h2 class="" id="1dd66d03-70c6-8082-b563-f28630489885">
+     2. 페이지 구성 및 메뉴 설계
+    </h2>
+    <h3 class="" id="1dd66d03-70c6-8041-82cf-da53e9f97e59">
+        <span class="sans">주요 메뉴 구성</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80ce-84e5-e08f9e8e1ed9">
+     <li style="list-style-type:disc">
+      <strong>
+       주 메뉴
+      </strong>
+      : 기사 평가 | 커뮤니티 | 미디어 리터러시 | 플랫폼 네트워크 | 프로젝트 소개
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8068-9476-d3ae7639a704">
+     <li style="list-style-type:disc">
+      <strong>
+       보조 메뉴
+      </strong>
+      : 다크모드 전환
+     </li>
+    </ul>
+    <h3 class="" id="1dd66d03-70c6-80cc-bf85-df40b1864b69">
+        <span class="sans">주요 페이지 구성 요소</span>
+    </h3>
+    <h3 class="compact-heading1" id="1dd66d03-70c6-80ff-896f-e786c858194c">
+        <span class="sans" style="font-size:0.9em; opacity:0.9; font-weight:400;">1) 랜딩페이지<span style="font-size:0.8em; opacity:0.8;">(홈)</span></span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-806e-b1a8-f7e18ae10772">
+     <li style="list-style-type:disc">
+      <strong>
+       헤더
+      </strong>
+      : 로고, 주/보조 메뉴, 3클릭 접근성 보장
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-805d-87b1-d95e3832a7a3">
+     <li style="list-style-type:disc">
+      <strong>
+       히어로 섹션
+      </strong>
+      : 슬로건, 기사 URL 입력 필드(메인 CTA)
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80d0-ba4f-e9580f9fc419">
+     <li style="list-style-type:disc">
+      <strong>
+       실시간 통계 카운터
+      </strong>
+      : 평가된 기사 수, 참여 사용자 수, 발견된 패턴 수
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8029-aaf1-c28fd9aa5069">
+     <li style="list-style-type:disc">
+      <strong>
+       가치 제안
+      </strong>
+      : 핵심 가치 아이콘과 간결한 설명
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-809b-ae02-e0e167bf31b9">
+     <li style="list-style-type:disc">
+      <strong>
+       사용 방법
+      </strong>
+      : 3단계 애니메이션 프로세스
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8084-b00f-f9e7215e1834">
+     <li style="list-style-type:disc">
+      <strong>
+       최근 평가 샘플
+      </strong>
+      : 인기 있는 최근 평가 결과 카드형 표시
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-806c-b6f5-c5dc028e236f">
+     <li style="list-style-type:disc">
+      <strong>
+       언론사 협력 네트워크 맵
+      </strong>
+      : 공간배치형 인터랙션
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80e1-b3ab-e349cf19519c">
+     <li style="list-style-type:disc">
+      <strong>
+       신뢰도 배지 섹션
+      </strong>
+      : 학술 인증 및 협력 기관 로고
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80c2-864c-cbffb866fecd">
+     <li style="list-style-type:disc">
+      <strong>
+       푸터
+      </strong>
+      : 저작권, 소셜 미디어, 이용약관, 확장 플랫폼 링크
+     </li>
+    </ul>
+    <h3 class="" id="1dd66d03-70c6-8097-b9ab-d70a87771179">
+        <span class="sans" style="font-size:0.9em; opacity:0.9; font-weight:400;">2) 기사 평가 페이지</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80e7-a8d0-fc17d8fc3a82">
+     <li style="list-style-type:disc">
+      <strong>
+       입력 방식 탭
+      </strong>
+      : URL/텍스트/파일 업로드
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8008-b295-ee20aa10f737">
+     <li style="list-style-type:disc">
+      <strong>
+       프로그레스 바
+      </strong>
+      : 단계별 진행 상황 실시간 표시
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-805d-943d-f52c241b3e57">
+     <li style="list-style-type:disc">
+      <strong>
+       자동 저장 시스템
+      </strong>
+      : 모바일 사용자 경험 최적화
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80f5-8926-f8a0cc7d2914">
+     <li style="list-style-type:disc">
+      <strong>
+       분석 시작 버튼
+      </strong>
+      : 눈에 띄는 CTA 버튼
+     </li>
+    </ul>
+    <h3 class="" id="1dd66d03-70c6-80ac-8c16-ef641d79f0de">
+        <span class="sans" style="font-size:0.9em; opacity:0.9; font-weight:400;">3) 평가 결과 페이지</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-807e-9b60-d99782e71233">
+     <li style="list-style-type:disc">
+      <strong>
+       상단 요약
+      </strong>
+      : 기사 정보, 종합 품질 점수 (색상 그래디언트 적용)
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8003-b317-ce8628a90385">
+     <li style="list-style-type:disc">
+      <strong>
+       레이더 차트
+      </strong>
+      : 8개 차원 시각화
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8048-b071-d9c9769fe943">
+     <li style="list-style-type:disc">
+      <strong>
+       기사 하이라이트
+      </strong>
+      : 문제 패턴에 컬러 코드 적용, 마우스 오버 시 설명
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80a8-9986-c557aada46dc">
+     <li style="list-style-type:disc">
+      <strong>
+       차원별 상세 분석
+      </strong>
+      : 각 차원의 세부 점수와 근거 설명
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80ce-b2bf-f8db6f8dd1cc">
+     <li style="list-style-type:disc">
+      <strong>
+       관련 규범 연결
+      </strong>
+      : 발견된 문제와 언론 윤리 규범 연결 설명
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80a6-95d2-e4b622314386">
+     <li style="list-style-type:disc">
+      <strong>
+       비교 분석 기능
+      </strong>
+      : 동일 주제/언론사 기사와 비교
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80f6-baa3-d349eb8c5b5c">
+     <li style="list-style-type:disc">
+      <strong>
+       공유 도구
+      </strong>
+      : PDF 다운로드, SNS 공유, 이메일 공유, 임베드 코드
+     </li>
+    </ul>
+    <h3 class="" id="1dd66d03-70c6-805a-8028-fcec033e3b4c">
+        <span class="sans" style="font-size:0.9em; opacity:0.9; font-weight:400;">4) 플랫폼 네트워크 페이지</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80b8-89f0-da01adc3afbf">
+     <li style="list-style-type:disc">
+      <strong>
+       미디어 비평 생태계 지도
+      </strong>
+      : 다양한 비평 플랫폼 시각화
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80ab-9b10-da979b4d2a55">
+     <li style="list-style-type:disc">
+      <strong>
+       자매 플랫폼 개발 가이드
+      </strong>
+      : 기술 인프라 공유 방법
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80df-b539-cb6aff548828">
+     <li style="list-style-type:disc">
+      <strong>
+       API 문서
+      </strong>
+      : 개발자를 위한 기술 문서
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8039-afa5-e074e2fc35bd">
+     <li style="list-style-type:disc">
+      <strong>
+       오픈소스 프로젝트
+      </strong>
+      : 코드 저장소 및 기여 방법
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80e8-a0f6-ead11f84b7b2">
+     <li style="list-style-type:disc">
+      <strong>
+       확장 프로그램
+      </strong>
+      : 브라우저별 확장 프로그램 다운로드
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80c1-8b2b-d7c42c5479b2">
+     <li style="list-style-type:disc">
+      <strong>
+       대시보드
+      </strong>
+      : 언론사별/카테고리별 품질 추이 그래프
+     </li>
+    </ul>
+    <p class="" id="1dd66d03-70c6-80ea-b946-d01e69923fde">
+    </p>
+    <h2 class="" id="1dd66d03-70c6-80a1-b87c-cc3ca7da367c">
+     3. 랜딩페이지 중요 요소<span style="font-size:0.8em; font-weight:400; opacity:0.8;">(우선순위별)</span>
+    </h2>
+    <h3 class="" id="1dd66d03-70c6-8080-939c-c12e4346d980">
+        <span class="sans">최우선 요소</span>
+    </h3>
+    <ol class="numbered-list" id="1dd66d03-70c6-801d-a9d5-d15c76d256d6" start="1" type="1">
+     <li>
+      <strong>
+       기사 URL 입력 필드와 분석 시작 버튼
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80aa-845d-cfd782b2a1ae">
+       <li style="list-style-type:disc">
+        3클릭 내 평가 완료 보장
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-803d-9e42-f4a5f7c7e587">
+       <li style="list-style-type:disc">
+        모바일 화면에서도 60% 이상 영역 차지
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8064-a3a4-f6ce67c328dd" start="2" type="1">
+     <li>
+      <strong>
+       프로젝트 슬로건과 핵심 가치 설명
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80e1-9afb-de50354e01f2">
+       <li style="list-style-type:disc">
+        "함께 읽고, 함께 바꾸는 저널리즘"
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8081-bd2e-fde309b594d1">
+       <li style="list-style-type:disc">
+        시민 주도 언론 개혁의 가치 명확히 전달
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-80c8-966e-cfdc3a90c35c" start="3" type="1">
+     <li>
+      <strong>
+       사용 방법 애니메이션
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80d0-80d3-e2214f9c289b">
+       <li style="list-style-type:disc">
+        4단계 애니메이션 (URL 입력 &rarr; AI 분석 &rarr; 사용자 평가 &rarr; 결과 공유)
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8062-a28c-e4cd27f20ad6">
+       <li style="list-style-type:disc">
+        짧지만 명확한 설명으로 진입 장벽 제거
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <h3 class="" id="1dd66d03-70c6-80d2-ab6a-f79240cc2a18">
+        <span class="sans">중요 요소</span>
+    </h3>
+    <ol class="numbered-list" id="1dd66d03-70c6-80bd-ad58-f079fd3ae330" start="1" type="1">
+     <li>
+      <strong>
+       평가 시스템 신뢰도 표시
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-805c-a3e9-f7214522f1c0">
+       <li style="list-style-type:disc">
+        8개 평가 차원 다이어그램
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8060-818a-eee22db1365d">
+       <li style="list-style-type:disc">
+        학술 인증 배지 및 파트너 로고
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8000-826a-f1161f28ca6c" start="2" type="1">
+     <li>
+      <strong>
+       샘플 평가 결과
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80ba-bfa5-fdc7d611b9e8">
+       <li style="list-style-type:disc">
+        실제 분석 사례로 시스템 효과 입증
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8001-b078-fa6a59212f45">
+       <li style="list-style-type:disc">
+        색상 코드화된 신뢰도 점수
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-80cf-8390-e3511173dce0" start="3" type="1">
+     <li>
+      <strong>
+       커뮤니티 활동 지표
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-806e-aa85-c3d918049c85">
+       <li style="list-style-type:disc">
+        실시간 평가 현황 카운터
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-801d-98aa-d0595da10e4d">
+       <li style="list-style-type:disc">
+        최근 활발한 토론 주제 미리보기
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-809c-8a66-e66aead74bb1" start="4" type="1">
+     <li>
+      <strong>
+       미디어 비평 생태계 연결 지도
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8045-87f8-d6ab237d5c8d">
+       <li style="list-style-type:disc">
+        다양한 미디어 비평 플랫폼 네트워크 시각화
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80ab-a610-f2380f7b20c0">
+       <li style="list-style-type:disc">
+        확장 가능성 강조
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <h3 class="" id="1dd66d03-70c6-8084-ad15-d5fd6d81f318">
+        <span class="sans">선택적 요소</span>
+    </h3>
+    <ol class="numbered-list" id="1dd66d03-70c6-8012-8dc4-c1b16e0c22a1" start="1" type="1">
+     <li>
+      <strong>
+       브라우저 확장 프로그램 다운로드
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-807a-bb0d-c6afc190be3a">
+       <li style="list-style-type:disc">
+        일상적 뉴스 소비 과정에 통합 가능성 강조
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-80e5-81cf-f5dfd1289b96" start="2" type="1">
+     <li>
+      <strong>
+       관리자 대시보드 미리보기
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8050-8dd9-fd38325706ed">
+       <li style="list-style-type:disc">
+        시스템 투명성 강화를 위한 모니터링 도구 소개
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8091-86b9-c5ff276db87c" start="3" type="1">
+     <li>
+      <strong>
+       사용자 평가 영상
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8005-baf1-e2c1a671910a">
+       <li style="list-style-type:disc">
+        실제 평가 과정 15초 클립으로 신뢰 구축
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8007-a59a-e4316464f44c" start="4" type="1">
+     <li>
+      <strong>
+       비영리 운영 모델 설명
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8005-9649-ffe197cd9b38">
+       <li style="list-style-type:disc">
+        투명한 재정 구조와 독립성 강조
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <h2 class="" id="1dd66d03-70c6-80bf-9555-cdb4476a29a7">
+     4. 차별화 요소
+    </h2>
+    <ol class="numbered-list" id="1dd66d03-70c6-80df-bf9d-e38e1edf84aa" start="1" type="1">
+     <li>
+      <strong>
+       플랫폼 생태계 확장 비전
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8040-aefd-f78f804a1367">
+       <li style="list-style-type:disc">
+        다양한 미디어 비평 플랫폼으로 확장되는 네트워크 구축
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8001-ae49-e78957316083">
+       <li style="list-style-type:disc">
+        API 및 개발자 도구를 통한 생태계 확장 지원
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-80bb-bd7d-de54e1ba4545" start="2" type="1">
+     <li>
+      <strong>
+       하이브리드 분석 시스템
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8031-bb85-e06df2f1cb86">
+       <li style="list-style-type:disc">
+        AI 알고리즘 + 시민 참여형 평가의 결합
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-802f-a4e3-d1b07cf7724e">
+       <li style="list-style-type:disc">
+        기술적 분석과 인간의 판단을 조화시킨 평가 모델
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8097-9321-ff9bcc50999b" start="3" type="1">
+     <li>
+      <strong>
+       비영리 운영 투명성
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8001-80b7-e6aa3d8b6a03">
+       <li style="list-style-type:disc">
+        운영 비용, 의사결정 과정, 발전 방향의 투명한 공개
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8018-a88f-d5afbe557720">
+       <li style="list-style-type:disc">
+        시민 주도성 강화를 위한 거버넌스 구조
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-8024-9c7f-ee42abab690b" start="4" type="1">
+     <li>
+      <strong>
+       교육 - 평가 - 토론 - 행동의 선순환
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-806c-9267-e3790c2ccfba">
+       <li style="list-style-type:disc">
+        미디어 리터러시 향상
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80e6-8575-fad5478ad3fc">
+       <li style="list-style-type:disc">
+        기사 품질 평가 참여
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-807f-9ce1-f8472b5c67d8">
+       <li style="list-style-type:disc">
+        커뮤니티 토론 활성화
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-804d-8f67-f04a9e92f049">
+       <li style="list-style-type:disc">
+        언론 개혁 행동으로 연결
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <p class="" id="1dd66d03-70c6-8087-93ba-d3a74039d386">
+    </p>
+    <h3 class="" id="1dd66d03-70c6-80e0-ad27-d4f6d03f6e34">
+        <span class="sans">선택적 요소</span>
+    </h3>
+    <ol class="numbered-list" id="1dd66d03-70c6-8076-b017-d807540a853d" start="1" type="1">
+     <li>
+      <strong>
+       소셜 미디어 공유 버튼
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8015-8824-d3e29dd94074">
+       <li style="list-style-type:disc">
+        이유: 플랫폼 확산과 사용자 네트워크 활용
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-800d-87af-cb283330b703">
+       <li style="list-style-type:disc">
+        구현: 주요 소셜 미디어 플랫폼 공유 버튼, 미리 작성된 공유 문구
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <ol class="numbered-list" id="1dd66d03-70c6-80db-897d-d620b119fbf3" start="2" type="1">
+     <li>
+      <strong>
+       브라우저 확장 프로그램 다운로드
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80de-b5f4-ceee4d312a88">
+       <li style="list-style-type:disc">
+        이유: 일상적인 뉴스 소비 과정에 쉽게 통합 가능함을 보여줌
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-804b-89f8-e75929487fd0">
+       <li style="list-style-type:disc">
+        구현: 주요 브라우저용 확장 프로그램 다운로드 링크 및 간단한 설명
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <p class="" id="1dd66d03-70c6-80a6-95cd-e2ef7c9033b6">
+    </p>
+    <p class="" id="1dd66d03-70c6-80e5-8a25-df3315525a0b">
+     이 설계안은 CR 프로젝트의 핵심 가치인 "시민 주도 언론 감시"와 "미디어 리터러시 향상"을 효과적으로 구현하면서, 사용자가 쉽게 참여하고 지속적으로 활용할 수 있는 플랫폼을 목표로 합니다. 기사 평가라는 핵심 기능을 중심으로, 평가 결과의 공유와 커뮤니티 토론을 통해 집단적 언론 개혁의 기반을 마련하는 구조입니다.
+    </p>
+   </div>
+  </article>
+  <span class="sans" style="font-size:14px;padding-top:2em">
+  </span>
+ </body>
+</html>

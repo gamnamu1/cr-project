@@ -1,0 +1,182 @@
+<html>
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>
+   6-3. 성능 최적화 및 패턴 인식 기술
+  </title>
+ </head>
+ <body>
+  <article class="page sans" id="1dd66d03-70c6-806d-8bc7-dc42995ea227">
+   <header>
+    <h1 class="page-title">
+     6-3. 성능 최적화 및 패턴 인식 기술
+    </h1>
+    <p class="page-description">
+    </p>
+   </header>
+   <div class="page-body">
+    <h2 class="" id="1dd66d03-70c6-8074-90d8-d380c555a870">
+     6-3-1. AI 모델 배포 및 성능 최적화 전략
+    </h2>
+    <p class="" id="1dd66d03-70c6-804b-98c4-cc82536707fb">
+     사용자에게 빠른 응답 시간을 제공하면서도 분석 정확도를 유지하기 위해 다음과 같은 모델 배포 전략을 적용한다:
+    </p>
+    <h3 class="" id="1dd66d03-70c6-8066-a100-e6b3214103f1">
+        <span class="sans">계층적 모델 파이프라인</span>
+    </h3>
+    <p class="" id="1dd66d03-70c6-8071-a0db-f8574e48ad89">
+     전체 분석 과정을 3단계로 구분하여 처리한다.
+    </p>
+    <ul class="bulleted-list" id="1dd66d03-70c6-800f-a816-e5cf3e0b1ad3">
+     <li style="list-style-type:disc">
+      1단계(필터링): 경량화된 모델(DistilKoBERT 등)로 기본적인 패턴 탐지와 기사 유형 분류.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80c7-9242-dd58e39c9942">
+     <li style="list-style-type:disc">
+      2단계(중간 분석): 일반적인 품질 평가 수행.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80d6-9a7d-f39c77c991d4">
+     <li style="list-style-type:disc">
+      3단계(심층 분석): 복잡한 패턴이나 상세 분석이 필요한 경우에만 대형 모델 활용.
+     </li>
+    </ul>
+    <h3 class="" id="1dd66d03-70c6-80ae-b773-e0a300604a1f">
+        <span class="sans">모델 최적화 기법</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8052-92ac-eb54ed030cfb">
+     <li style="list-style-type:disc">
+      모델 양자화: 32비트 모델을 8비트 정수형으로 변환하여 크기 축소.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-802b-9e43-d194dcac3461">
+     <li style="list-style-type:disc">
+      모델 프루닝: 중요도가 낮은 가중치 제거로 모델 크기 70%까지 축소하면서 성능 저하는 3% 미만 유지.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-809c-97f3-c01364ca0786">
+     <li style="list-style-type:disc">
+      모델 증류: 대형 모델의 지식을 경량 모델로 전달하는 지식 증류 기법 적용.
+     </li>
+    </ul>
+    <h3 class="" id="1dd66d03-70c6-80a4-91a4-e94f900feb24">
+        <span class="sans">하이브리드 클라우드-엣지 접근법</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8070-8fcb-e6c2dcfa7d64">
+     <li style="list-style-type:disc">
+      경량 모델은 사용자 기기에서 직접 실행하여 응답 지연 최소화.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-808a-9eaf-e0ad3a9ba712">
+     <li style="list-style-type:disc">
+      복잡한 분석은 클라우드에서 처리하되, GPU 가속 활용.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8015-b84e-fdeb0a8ed8d3">
+     <li style="list-style-type:disc">
+      지리적 분산 배치로 네트워크 지연 최소화.
+     </li>
+    </ul>
+    <h3 class="" id="1dd66d03-70c6-806c-b9ea-e1b21e514c62">
+        <span class="sans">지능형 캐싱 전략</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80bb-837e-f37bf40f162d">
+     <li style="list-style-type:disc">
+      자주 분석되는 기사 결과를 Redis 기반 캐싱 시스템에 저장.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8010-b120-d0da66bf2b65">
+     <li style="list-style-type:disc">
+      유사 기사에 대한 부분 결과 재활용으로 계산 효율성 향상.
+     </li>
+    </ul>
+    <h2 class="" id="1dd66d03-70c6-80f4-bcaa-f30af5da8bfc">
+     6-3-2. 계층적 패턴 인식 시스템
+    </h2>
+    <p class="" id="1dd66d03-70c6-80ae-a651-e8b5a130e670">
+     기사 텍스트의 문제적 패턴을 효과적으로 식별하기 위해 계층적 패턴 인식 시스템을 도입. 이 접근법은 자원 집약적인 과거 데이터 분석 없이도 현재 기사의 품질을 정확하게 평가할 수 있다:
+    </p>
+    <p class="" id="1dd66d03-70c6-8047-901f-dc5a4b4d6476">
+     문제적 표현 탐지 &rarr; 문맥 평가 &rarr; 품질 영향 분석.
+    </p>
+    <p class="" id="1dd66d03-70c6-808c-a375-e8609ffb1512">
+     이 시스템은 다음 세 가지 계층으로 구성된다:
+    </p>
+    <h3 class="" id="1dd66d03-70c6-803f-bb98-cde984a3392a">
+        <span class="sans">기본 패턴 인식 계층</span>
+    </h3>
+    <p class="" id="1dd66d03-70c6-8056-a5b3-c8825e8e02e6">
+     무주체 피동형 표현, 익명 취재원, 주관적 술어 등 문제적 표현을 정규표현식과 구문 분석을 통해 1차적으로 식별함.
+    </p>
+    <h3 class="" id="1dd66d03-70c6-8067-89c3-ed7b07030b86">
+        <span class="sans">문맥 이해 계층</span>
+    </h3>
+    <p class="" id="1dd66d03-70c6-8020-a6c6-f513d807e28b">
+     패턴이 사용된 문맥을 분석하여 예외적으로 허용 가능한 경우(예: 북한 관련 보도에서의 익명 취재원)와 문제가 되는 경우를 구분한다. 이는 단순 패턴 매칭의 한계를 보완.
+    </p>
+    <h3 class="" id="1dd66d03-70c6-806e-89f6-fdd22b079af1">
+        <span class="sans">영향도 평가 계층</span>
+    </h3>
+    <p class="" id="1dd66d03-70c6-8059-bb9a-fd059a90b201">
+     식별된 패턴이 8개 핵심 평가 차원(진실성, 투명성 등)에 미치는 영향을 계산한다. 동일 패턴이라도 반복 사용 시 로그함수적 감점을 적용하고, 패턴 결합(예: 익명+피동형)에는 추가 감점을 부여한다.
+    </p>
+    <p class="" id="1dd66d03-70c6-80f6-82ff-eaa9b20251e2">
+     이 계층적 시스템은 기사 유형과 길이에 따라 유연하게 가중치를 조정하며, 수학적으로는 다음과 같이 표현할 수 있다:
+    </p>
+    <p class="" id="1dd66d03-70c6-8056-98d9-c794eeede623">
+     S_d = b_d - &Sigma;(w_i,d &times; f(p_i))
+    </p>
+    <p class="" id="1dd66d03-70c6-80ff-8f2f-f9021db8f1d0">
+     여기서 S_d는 차원 d의 점수, b_d는 기본 점수, w_i,d는 패턴 i가 차원 d에 미치는 영향 가중치, f(p_i)는 패턴 i의 발생 빈도에 대한 로그함수적 감점 함수.
+    </p>
+    <h3 class="" id="1dd66d03-70c6-80c2-b076-d0e604503405">
+        <span class="sans">설명 가능한 AI(XAI) 통합</span>
+    </h3>
+    <p class="" id="1dd66d03-70c6-80be-870d-c922931ff7ea">
+     평가 결과에 대한 사용자 신뢰와 이해도를 높이기 위해 설명 가능한 AI 접근법을 통합:
+    </p>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80f8-b116-d67607d44695">
+     <li style="list-style-type:disc">
+      <strong>
+       시각적 하이라이트
+      </strong>
+      : 문제적 표현에 색상 코드화된 하이라이트 적용
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8061-97dc-da84e9b68d42">
+     <li style="list-style-type:disc">
+      <strong>
+       근거 기반 설명
+      </strong>
+      : 각 감점 항목에 대해 "이 표현이 왜 문제인지"를 명확히 설명.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8031-9026-ce0e3d5ef7f9">
+     <li style="list-style-type:disc">
+      <strong>
+       개선 제안
+      </strong>
+      : 대안적 표현 방식과 구체적인 개선 방향 제시.
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80de-ada2-efbe881d7b04">
+     <li style="list-style-type:disc">
+      <strong>
+       규범 연계
+      </strong>
+      : 관련 언론 윤리 규범과 원칙을 연결하여 평가의 정당성 강화.
+     </li>
+    </ul>
+    <h2 class="" id="1dd66d03-70c6-80da-9b64-e13baf993ffa">
+     6-3-3. 실용성 제고를 위한 하이브리드 접근법
+    </h2>
+    <p class="" id="1dd66d03-70c6-805e-abcc-f487f60c5077">
+     '외부 요인' 분석을 위해 지도학습(supervised learning)과 비지도학습(unsupervised learning)을 결합한 방식을 제안함. 정치적 편향성 감지에는 BERT 모델을 fine-tuning한 텍스트 분류기를, 상업적 영향력 분석에는 토픽 모델링(topic modeling) 기법을 동시에 적용한다.
+    </p>
+   </div>
+  </article>
+  <span class="sans" style="font-size:14px;padding-top:2em">
+  </span>
+ </body>
+</html>

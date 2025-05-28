@@ -1,0 +1,303 @@
+<html>
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>
+   6-1. AI 모델 전략 및 의사결정
+  </title>
+ </head>
+ <body>
+  <article class="page sans" id="1dd66d03-70c6-80f2-8852-df2a7058366a">
+   <header>
+    <h1 class="page-title">
+     6-1. AI 모델 전략 및 의사결정
+    </h1>
+    <p class="page-description">
+    </p>
+   </header>
+   <div class="page-body">
+    <h2 class="" id="1dd66d03-70c6-8004-abd6-c3131a08b670">
+     6-1-1. AI 모델 선택 및 개발 전략
+    </h2>
+    <p class="" id="1dd66d03-70c6-8028-a5d9-e2818cabca42">
+     현실적인 리소스 제약과 점진적 발전을 고려한 단계적 AI 개발 전략을 수립:
+    </p>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80bc-a312-ef3a4fa24c4b">
+     <li style="list-style-type:disc">
+      <strong>
+       초기 단계: 프롬프트 엔지니어링 접근법
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8058-bfd8-fff893ebcc46">
+       <li style="list-style-type:circle">
+        GPT-4나 Claude와 같은 상용 API 활용 &rarr; 빠른 프로토타이핑과 <a href="https://brunch.co.kr/@dongdong1/14" target="_blank">MVP</a> 출시
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80e2-910f-d1d7b8a59fc5">
+       <li style="list-style-type:circle">
+        프롬프트 엔지니어링으로 한국어 언론 텍스트 특성 반영
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80ed-828f-d6c7709dbf95">
+       <li style="list-style-type:circle">
+        사용자 피드백 수집 및 방향성 검증
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-807d-bc09-da58df51c5ad">
+     <li style="list-style-type:disc">
+      <strong>
+       중기 단계: LoRA 기반 경량 파인튜닝
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8044-89bd-e1197617afe9">
+       <li style="list-style-type:circle">
+        <a href="https://bcho.tistory.com/1452" target="_blank">LoRA</a><a href="https://bcho.tistory.com/1452" target="_blank"><span style="font-size:0.8em;">(Low-Rank Adaptation)</span></a> 방식을 활용한 효율적 모델 개발
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8095-8913-d4235af963a3">
+       <li style="list-style-type:circle">
+        적은 데이터(500~1,000개)와 컴퓨팅 자원으로도 효과적인 특화 모델 개발
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8019-8fd9-f325c5e65426">
+       <li style="list-style-type:circle">
+        1개 GPU(NVIDIA T4/V100) 환경에서 2~4시간 내외 학습 가능
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80fb-ba06-dbbde6fb7222">
+       <li style="list-style-type:circle">
+        원본 모델 대비 추가 2~10MB의 어댑터 파일만 생성되는 경량 솔루션
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8052-b089-f0c1d03ad7e5">
+     <li style="list-style-type:disc">
+      <strong>
+       장기 단계: 맞춤형 AI 모델 개발
+      </strong>
+      <ul class="bulleted-list" id="1dd66d03-70c6-807b-93db-d42292a87568">
+       <li style="list-style-type:circle">
+        충분한 데이터 확보 후 <a href="https://github.com/SKTBrain/KoBERT" target="_blank">KoBERT</a>, <a href="https://github.com/kakaobrain/kogpt" target="_blank">KoGPT</a> 등 한국어 특화 모델 파인튜닝
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-804e-8cba-fc60dd7de137">
+       <li style="list-style-type:circle">
+        언론 텍스트 코퍼스에 최적화된 자체 모델 구축
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80ac-b57a-f2e8833c4d3c">
+       <li style="list-style-type:circle">
+        다양한 기사 유형과 주제에 특화된 모델 앙상블 개발
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <p class="" id="1dd66d03-70c6-8048-9558-c81ef64b5fe0">
+     자체 개발 모델의 장점은 한국 언론의 특수성에 최적화, 장기적 비용 효율성, 독립성과 통제력 보장이며, 이는 CR 프로젝트의 핵심 가치와 일치한다.
+    </p>
+    <h2 class="" id="1dd66d03-70c6-80c7-a12e-c980dfca394e">
+     6-1-2. LLM 접근 방식 비교 분석
+    </h2>
+    <p class="" id="1dd66d03-70c6-80df-bc57-ec98083b3983">
+     현실적인 리소스 제약과 점진적 발전을 고려한 단계적 AI 개발 전략을 수립:
+    </p>
+    <h3 class="" id="1dd66d03-70c6-80d6-ba40-ef83ad1654a5">
+        <span class="sans">대중적 AI 서비스 API 활용 방식</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-805d-aeaf-c5ba3bbe3080">
+     <li style="list-style-type:disc">
+      <strong>
+       모델 옵션
+      </strong>
+      : OpenAI GPT-4, Anthropic Claude, Google Gemini
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80f8-969f-ca2b0f87df77">
+     <li style="list-style-type:disc">
+      <strong>
+       장점
+      </strong>
+      :
+      <ul class="bulleted-list" id="1dd66d03-70c6-80c5-a9b0-dc88fe049036">
+       <li style="list-style-type:circle">
+        빠른 구축 및 배포 가능
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-800b-8d69-d37d7797bc08">
+       <li style="list-style-type:circle">
+        최신 모델 성능 즉시 활용 가능
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-804a-9da0-f79b7d880153">
+       <li style="list-style-type:circle">
+        인프라 관리 부담 최소화
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8096-b0c1-ffca464c2189">
+       <li style="list-style-type:circle">
+        초기 개발 비용 절감
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80e4-9ae2-f11748202c5b">
+       <li style="list-style-type:circle">
+        안정적인 서비스 품질 보장
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-8034-8962-f19759421bbe">
+     <li style="list-style-type:disc">
+      <strong>
+       단점
+      </strong>
+      :
+      <ul class="bulleted-list" id="1dd66d03-70c6-804d-a152-fc05f3c423d7">
+       <li style="list-style-type:circle">
+        API 호출 비용 지속 발생 (규모 확장 시 비용 급증)
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80e7-adf8-f6cc2f753f04">
+       <li style="list-style-type:circle">
+        데이터 프라이버시 우려 (외부 서비스에 데이터 전송)
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80e6-a47a-dff986ee0dc7">
+       <li style="list-style-type:circle">
+        커스터마이징 제한적
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80e9-823f-dd919cf4dbf8">
+       <li style="list-style-type:circle">
+        외부 서비스 의존성으로 인한 리스크
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-807c-817d-e3025c09018f">
+       <li style="list-style-type:circle">
+        특화된 저널리즘 평가 능력 제한적
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <h3 class="" id="1dd66d03-70c6-8091-8397-c61377946015">
+        <span class="sans">오픈소스 LLM 파인튜닝 방식</span>
+    </h3>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80f7-91ae-c659882f92d6">
+     <li style="list-style-type:disc">
+      <strong>
+       모델 옵션
+      </strong>
+      : Llama 3.3<span style="font-size:0.8em; opacity:0.9;">(70B)</span>, Llama 3.1<span style="font-size:0.8em; opacity:0.9;">(405B)</span>, Mixtral<span style="font-size:0.8em; opacity:0.9;">(8x7B)</span>, DeepSeek V3<span style="font-size:0.8em; opacity:0.9;">(671B)</span>, Qwen 2.5<span style="font-size:0.8em; opacity:0.9;">(72B)</span>, Gemma2<span style="font-size:0.8em; opacity:0.9;">(9B)</span>
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80a8-872a-c4b2ae343481">
+     <li style="list-style-type:disc">
+      <strong>
+       장점
+      </strong>
+      :
+      <ul class="bulleted-list" id="1dd66d03-70c6-803f-9110-fbe612d00ac3">
+       <li style="list-style-type:circle">
+        저널리즘 평가에 특화된 모델 개발 가능
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8010-9d45-dce5db76edf5">
+       <li style="list-style-type:circle">
+        장기적 비용 효율성 (초기 투자 후 운영 비용 감소)
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-80df-8dc1-f813c4aac9bb">
+       <li style="list-style-type:circle">
+        데이터 프라이버시 보장
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8085-9362-d85d809cb30e">
+       <li style="list-style-type:circle">
+        완전한 커스터마이징 가능
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-802a-870a-ff7bfe25d3c6">
+       <li style="list-style-type:circle">
+        독자적 기술력 확보
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <ul class="bulleted-list" id="1dd66d03-70c6-80bd-a17b-e5aee69d89e1">
+     <li style="list-style-type:disc">
+      <strong>
+       단점
+      </strong>
+      :
+      <ul class="bulleted-list" id="1dd66d03-70c6-80fb-93b5-ffaf323e7656">
+       <li style="list-style-type:circle">
+        초기 개발 및 학습 비용 높음
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-803a-aee4-f7b0b36de3ab">
+       <li style="list-style-type:circle">
+        전문 인력 필요 (ML 엔지니어, 데이터 과학자)
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-807d-91fb-d8070520b05d">
+       <li style="list-style-type:circle">
+        인프라 구축 및 관리 부담
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8013-a577-c7954cebf935">
+       <li style="list-style-type:circle">
+        개발 및 최적화에 시간 소요
+       </li>
+      </ul>
+      <ul class="bulleted-list" id="1dd66d03-70c6-8053-8a7a-d6a91c81c3d2">
+       <li style="list-style-type:circle">
+        모델 업데이트 및 유지보수 책임
+       </li>
+      </ul>
+     </li>
+    </ul>
+    <h2 class="" id="1dd66d03-70c6-8070-b985-e020d421a4a8">
+     6-1-3. CR 프로젝트에 적합한 접근법
+    </h2>
+    <p class="" id="1dd66d03-70c6-80a4-babf-d6b776ad66b3">
+     CR 프로젝트의 목표와 특성을 고려할 때,
+     <strong>
+      오픈소스 LLM 파인튜닝 방식
+     </strong>
+     이 더 적합:
+    </p>
+    <h3 class="" id="1dd66d03-70c6-80f3-9368-cf683612336f">
+     프로젝트 철학과의 일치성
+    </h3>
+    <p class="" id="1dd66d03-70c6-809d-a306-cbabd95fc0e1">
+     CR 프로젝트는 "시민 주도", "기성 언론에 대한 독립적 평가"를 강조. 오픈소스 접근법은 "접근성, 개방성, 확장성"이라는 핵심 원칙과 일치하며, "비영리를 철저히 고수"한다는 원칙에 부합하는 지속 가능한 모델이다.
+    </p>
+    <h3 class="" id="1dd66d03-70c6-8080-ae0e-d7a841d9378a">
+     맞춤형 평가 역량
+    </h3>
+    <p class="" id="1dd66d03-70c6-8091-8ad2-f3cc16bd450b">
+     다차원 매트릭스 평가는 고도로 특화된 작업으로, 파인튜닝을 통해 한국 언론 맥락(무주체 피동형 문장, 익명 취재원 관행 등)에 최적화할 수 있음.
+    </p>
+    <h3 class="" id="1dd66d03-70c6-804b-83c5-e4eb9be1446b">
+     데이터 자주권과 프라이버시
+    </h3>
+    <p class="" id="1dd66d03-70c6-80cd-a65e-c9300572a205">
+     자체 호스팅 모델은 분석 데이터가 외부 서비스로 전송되지 않아 프라이버시를 보장할 수 있음. 상업적 API의 정책 변경이나 서비스 중단 위험에서도 자유롭다.
+    </p>
+    <h3 class="" id="1dd66d03-70c6-80a3-a893-df7e1ebdacca">
+     비용 효율성과 지속가능성
+    </h3>
+    <p class="" id="1dd66d03-70c6-8019-8b63-de1494c891ba">
+     초기 구축 비용은 높지만, 사용량이 증가할수록 API 방식보다 경제적입니다. 시민 참여형 프로젝트로서 지속가능한 운영 모델 구축에 적합하다.
+    </p>
+    <h3 class="" id="1dd66d03-70c6-806b-99a0-ce2522812687">
+     커뮤니티 참여와 확장성
+    </h3>
+    <p class="" id="1dd66d03-70c6-8099-b3d6-e5b444069d87">
+     오픈소스 접근방식은 기술 커뮤니티의 참여와 기여를 유도합니다. 다양한 형태의 미디어 비평 플랫폼으로 확장하는 "하나의 네트워크"를 구축하는 데 유리하다.
+    </p>
+   </div>
+  </article>
+  <span class="sans" style="font-size:14px;padding-top:2em">
+  </span>
+ </body>
+</html>
