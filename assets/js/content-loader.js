@@ -434,16 +434,23 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         // pre > code 블록도 처리
                         document.querySelectorAll('pre > code:not(.language-python)').forEach((block) => {
-                            // Python 코드인지 내용으로 유추
+                        // Python 코드인지 내용으로 유추
                             if (block.textContent.includes('def ') || 
                                 block.textContent.includes('import ') || 
                                 block.textContent.includes('class ')) {
                                 block.className = 'language-python';
                             }
                             
-                            // 하이라이팅 적용
+                        // 하이라이팅 적용
                             hljs.highlightElement(block);
                         });
+
+                        // 오디오 플레이어 초기화 (챕터1 페이지들)
+                        if (contentId === 'prologue' || contentId === 'chapter1' || 
+                            contentId === 'chapter2' || contentId === 'chapter3' || 
+                            contentId === 'chapter4' || contentId === 'chapter5') {
+                            setTimeout(initAudioPlayer, 100);
+                        }
                     }, 500); // 시간을 좀 더 늘림
 
                     // 특정 섹션으로 스크롤 (있는 경우)
@@ -579,6 +586,58 @@ document.addEventListener('DOMContentLoaded', function() {
         // 이미 welcome 페이지를 로드하므로 여기서는 아무 작업도 하지 않음
     }
 
+// 오디오 플레이어 초기화 함수 (범용)
+    function initAudioPlayer() {
+        // 페이지 내 모든 오디오 토글 버튼 찾기
+        const audioButtons = document.querySelectorAll('.audio-toggle-btn');
+        
+        audioButtons.forEach(button => {
+            const buttonId = button.id;
+            let audioId;
+            
+            // 버튼 ID에 따라 해당 오디오 요소 ID 결정
+            if (buttonId === 'audio-toggle') {
+                audioId = 'prologue-audio';
+            } else if (buttonId === 'audio-toggle-ch1') {
+                audioId = 'chapter1-audio';
+            } else if (buttonId === 'audio-toggle-ch2') {
+                audioId = 'chapter2-audio';
+            } else if (buttonId === 'audio-toggle-ch3') {
+                audioId = 'chapter3-audio';
+            } else if (buttonId === 'audio-toggle-ch4') {
+                audioId = 'chapter4-audio';
+            } else if (buttonId === 'audio-toggle-ch5') {
+                audioId = 'chapter5-audio';
+            }
+            
+            const audio = document.getElementById(audioId);
+            if (!audio) return;
+            
+            let isPlaying = false;
+            
+            button.addEventListener('click', function() {
+                if (isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    console.log(`${audioId} 일시정지`);
+                } else {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                        console.log(`${audioId} 재생 시작`);
+                    }).catch(error => {
+                        console.error(`${audioId} 재생 오류:`, error);
+                    });
+                }
+            });
+            
+            // 오디오 종료시 상태 초기화
+            audio.addEventListener('ended', function() {
+                isPlaying = false;
+                console.log(`${audioId} 재생 완료`);
+            });
+        });
+    }
+    
     // loadContent 함수를 전역으로 노출
     window.loadContent = loadContent;
 });
