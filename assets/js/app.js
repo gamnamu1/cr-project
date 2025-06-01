@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 };
 
     // 초기화면 자동 로드 (새로 추가된 부분)
-    loadContent('welcome');
+    loadContent('change');
 });
 
 // 전역 이벤트 위임 - 동적으로 추가된 content-link 요소도 처리
