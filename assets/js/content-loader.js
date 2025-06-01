@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 파일 경로 매핑 객체
     const contentMapping = {
-        'welcome': 'pages/welcome.html',
+        'change': 'pages/welcome.html',
         // 탭 개요 페이지 추가 (기존 매핑 앞에 추가)
         'chapter1-overview': 'pages/chapter1-overview.html',
         'chapter2-overview': 'pages/chapter2-overview.html',
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 탭 매핑 정의 - 각 콘텐츠가 어떤 탭에 속하는지 지정
     const tabMapping = {
         // 챕터 1 (프로젝트: 배경) 관련 콘텐츠
-        'welcome': 'I',
+        'change': 'I',
         'chapter1-overview': 'I',
         'prologue': 'I',
         'chapter1': 'I',
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     updateActiveTabForContent(contentId);
 
                     // welcome 페이지인 경우 애니메이션 실행
-                    if (contentId === 'welcome') {
+                    if (contentId === 'change') {
                         // 약간의 지연 후 애니메이션 시작 (DOM이 완전히 렌더링되도록)
                         setTimeout(() => {
                         const paragraphs = document.querySelectorAll('.paragraph-container');
