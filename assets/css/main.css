@@ -133,6 +133,9 @@ main {
     padding: 1rem 2rem;
     cursor: pointer;
     transition: background-color 0.3s;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    text-align: center;
 }
 
 .tab.active {
@@ -198,6 +201,8 @@ main {
     .tab {
         padding: 0.75rem 1rem;
         font-size: 0.9rem;
+        word-break: keep-all;
+        overflow-wrap: break-word;
     }
 }
 
