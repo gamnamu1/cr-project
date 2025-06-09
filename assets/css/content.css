@@ -665,6 +665,22 @@ blockquote .bulleted-list li:before {
     font-size:1em !important;
 }
 
+/* 태블릿 사이즈 (768px~1023px) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .editors_note {
+        padding: 5px 1.8em;
+        padding-left: 1.8em !important;
+    }
+}
+
+/* 모바일 사이즈 (767px 이하) */
+@media screen and (max-width: 767px) {
+    .editors_note {
+        padding: 5px 1.2em;
+        padding-left: 1.2em !important;
+    }
+}
+
 /* 일반 텍스트처럼 보이는 링크 스타일 */
 .notion-content a.text-link,
 .text-link {
