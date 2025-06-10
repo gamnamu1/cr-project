@@ -6,6 +6,17 @@
 cr_project/
 ├── README.md
 ├── assets/
+│   ├── audio/
+│   │   ├── cr_ch0.mp3
+│   │   ├── cr_ch1.mp3
+│   │   ├── cr_ch2.mp3
+│   │   ├── cr_ch3.mp3
+│   │   ├── cr_ch4.mp3
+│   │   ├── cr_ch5.mp3
+│   │   ├── cr_podcast1.mp3
+│   │   ├── cr_podcast2.mp3
+│   │   ├── cr_podcast3.mp3
+│   │   └── cr_podcast4.mp3
 │   ├── css/
 │   │   ├── content/
 │   │   ├── content.css
@@ -13,7 +24,10 @@ cr_project/
 │   │   ├── highlight.css
 │   │   ├── main.css
 │   │   ├── sidebar/
-│   │   └── sidebar.css
+│   │   └── sidebar.css 
+│   ├── evaluations/
+│   │   ├── user_guide.txt
+│   │   └── template.md
 │   ├── images/
 │   │   ├── blueprint-bg.jpg
 │   │   ├── chapter1-front.jpg
@@ -43,7 +57,7 @@ cr_project/
     │   ├── ch2_02_03_02.html (2-3-2. 경영 지원 조력자)
     │   ├── ch2_02_03_03.html (2-3-3. 캠페이너)
     │   ├── ch2_03.html (3. 벤치마킹)
-    │   ├── ch2_03_01.html (3-1. 글로벌 표준 확립)
+    │   ├── ch2_03_01.html (3-1. 공적 플랫폼으로 설장)
     │   ├── ch2_03_02.html (3-2. 비즈니스 모델 전환)
     │   ├── ch2_03_03.html (3-3. 부분적 참고 사례)
     │   └── ch2_03_04.html (3-4. 프로젝트를 위한 시사점)
@@ -108,25 +122,70 @@ cr_project/
 # CR 프로젝트 가이드 문서
 
 ## 프로젝트 개요
-- **목적**: 미디어 비평을 위한 플랫폼 구축
+- **목적**: 시민이 주도하는 뉴스 신뢰도 평가 플랫폼 구축
 - **현재 상태**: 노션에서 내려받은 HTML 페이지들을 웹사이트로 통합한 프로젝트
-- **배포 환경**: Netlify (https://cr-project.netlify.app/)
+- **배포 환경**: 
+  - **저장소**: GitHub Repository
+  - **배포**: Netlify (https://cr-project.netlify.app/)
+  - **최종 도메인**: https://cr-project.org
 
 ## 사이트 구조
 - **레이아웃**: 2단 구조 (좌측 사이드바 네비게이션 + 우측 콘텐츠 영역)
 - **콘텐츠 조직**: 4개 주요 챕터로 구성, 각 챕터는 여러 하위 페이지로 세분화
+- **네비게이션**: SPA(Single Page Application) 방식의 동적 콘텐츠 로딩
 
 ### 주요 챕터 구성
 1. **I 프로젝트: 배경**: 미디어 현황 분석 및 방향성 제시
 2. **II 실행 계획**: 단계별 실행 계획 및 인력 구성
-3. **III 기술적 구현 방안**: 평가 시스템 및 기술적 구현 설계
+3. **III 비평 플랫폼 설계**: 평가 시스템 및 기술적 구현 설계
 4. **IV 부록**: 추가 자료 및 참고 사항
 
 ## 기술 스택
 - **프론트엔드**: HTML5, CSS3, Vanilla JavaScript
 - **콘텐츠 로딩**: AJAX를 통한 동적 콘텐츠 로드 (content-loader.js)
 - **스타일링**: 모듈화된 CSS (main.css, sidebar.css, content.css, highlight.css)
-- **호스팅**: Netlify 사용 중
+- **오디오**: HTML5 Audio API, MP3 지원
+- **접근성**: 스크린 리더 호환, 키보드 네비게이션
+- **검색**: 클라이언트 사이드 검색 (브라우저 내장)
+- **호스팅**: Netlify + GitHub Pages 호환
+
+## 오디오 기능
+- **팟캐스트**: CR 프로젝트 관련 팟캐스트 4편 제공
+- **챕터별 오디오**: 각 챕터의 오디오 버전 제공 (TTS 또는 녹음)
+- **지원 형식**: MP3
+- **접근성**: 시각 장애인 및 오디오 학습 선호자를 위한 대체 콘텐츠
+
+### 오디오 파일 구조
+- `cr_ch0.mp3` ~ `cr_ch5.mp3`: 각 챕터별 오디오
+- `cr_podcast1.mp3` ~ `cr_podcast4.mp3`: CR 프로젝트 관련 팟캐스트
+
+## 평가 시스템
+- **목적**: 뉴스 기사의 품질과 신뢰성을 AI 기반으로 평가
+- **사용자 가이드**: `assets/evaluations/user_guide.txt`
+- **평가 템플릿**: `assets/evaluations/template.md`
+- **평가 기준**: 8개 차원 기반 다차원 매트릭스 시스템
+  - 진실성과 정확성
+  - 투명성과 책임성
+  - 균형성과 공정성
+  - 독립성과 자율성
+  - 인권과 프라이버시 존중
+  - 전문성과 심층성
+  - 언어와 표현의 윤리
+  - 디지털 환경의 윤리
+
+## 사용자 가이드
+
+### 웹사이트 사용법
+1. **네비게이션**: 좌측 사이드바에서 원하는 챕터/섹션 선택
+2. **탭 전환**: 상단 탭으로 주요 챕터 간 빠른 이동
+3. **모바일**: 햄버거 메뉴(☰)로 사이드바 토글
+4. **검색**: 브라우저 검색 기능(Ctrl+F) 활용 권장
+
+### 콘텐츠 구성
+- **I. 프로젝트: 배경**: CR 프로젝트의 필요성과 목적
+- **II. 실행 계획**: 구체적인 실행 로드맵과 팀 구성
+- **III. 비평 플랫폼 설계**: 기술적 구현 방안과 평가 시스템
+- **IV. 부록**: 추가 자료, 샘플, 개발 가이드
 
 ## 핵심 파일 설명
 
@@ -144,6 +203,24 @@ cr_project/
 - **app.js**: 메인 애플리케이션 로직, 이벤트 핸들러, UI 인터랙션
 - **content-loader.js**: AJAX를 통한 콘텐츠 로드 및 페이지 전환 관리
 - **welcome-animation.js**: 웰컴 페이지 애니메이션 효과
+
+## 개발 환경 설정
+
+### 로컬 개발
+1. 프로젝트 클론: `git clone [repository-url]`
+2. 로컬 서버 실행: `python -m http.server 8000` 또는 Live Server 사용
+3. 브라우저에서 `http://localhost:8000` 접속
+
+### 콘텐츠 수정
+1. `pages/` 폴더의 해당 HTML 파일 수정
+2. `content-loader.js`의 `contentMapping` 확인
+3. 새 페이지 추가 시 `index.html` 사이드바 메뉴도 업데이트
+
+### 스타일 수정
+- 전역 스타일: `assets/css/main.css`
+- 사이드바: `assets/css/sidebar.css`
+- 콘텐츠 영역: `assets/css/content.css`
+- 코드 하이라이팅: `assets/css/highlight.css`
 
 ## 주요 문제점 및 수정 방법
 
@@ -168,14 +245,28 @@ cr_project/
 
 ## 배포 준비 및 방법
 
-### Netlify 배포 준비
+### GitHub Repository 관리
+1. 소스 코드는 GitHub Repository에 저장
+2. `main` 브랜치를 기본 배포 브랜치로 사용
+3. 모든 변경사항은 GitHub에 커밋/푸시
+
+### Netlify 배포 설정
+1. **자동 배포**: GitHub Repository와 연동하여 자동 빌드/배포
+2. **배포 URL**: https://cr-project.netlify.app/
+3. **커스텀 도메인**: cr-project.org로 도메인 연결
+4. **HTTPS**: 자동 SSL 인증서 적용
+
+### 배포 전 체크리스트
 1. 모든 상대 경로가 올바른지 확인 (절대 경로 사용 금지)
 2. 외부 리소스가 HTTPS를 사용하는지 확인
-3. 필요시 `netlify.toml` 파일 생성
+3. 이미지 및 오디오 파일 경로 확인
+4. 모바일 반응형 테스트
+5. 다양한 브라우저에서 호환성 테스트
 
-### GitHub Pages 배포 준비
-1. `.nojekyll` 파일 생성 (Jekyll 처리 방지)
-2. 하위 경로 배포 시 경로 처리 방법 적용
+### 도메인 설정
+- **Netlify 도메인**: cr-project.netlify.app
+- **커스텀 도메인**: cr-project.org
+- **DNS 설정**: 도메인 등록업체에서 Netlify DNS 서버로 설정
 
 ## 작업 진행 권장 순서
 1. `content-loader.js` 파일의 `contentMapping` 객체 수정
@@ -183,7 +274,7 @@ cr_project/
 3. 노션 HTML 파일 구조 분석 및 콘텐츠 추출 방식 개선
 4. CSS 스타일 통합 및 개선
 5. 반응형 디자인 테스트 및 개선
-6. 배포 전 최종 테스트 및 준비
+6. GitHub에 커밋/푸시 후 Netlify 자동 배포 확인
 
 ## 주의사항
 1. 파일 경로와 이름 변경 시 `contentMapping` 객체도 함께 업데이트
@@ -191,11 +282,24 @@ cr_project/
 3. 외부 리소스(이미지, 스크립트 등)의 경로 확인
 4. 배포 전 다양한 브라우저와 기기에서 테스트
 5. 큰 HTML 파일의 경우 로딩 성능 최적화 고려 (지연 로딩 등)
+6. 오디오 파일 용량 관리 (필요시 압축)
 
 ## 프로젝트 파일 구조
 프로젝트는 다음과 같은 구조로 구성되어 있습니다:
 - 루트 디렉토리: index.html, README.md
-- assets/: CSS, JavaScript, 이미지 파일
+- assets/: CSS, JavaScript, 이미지, 오디오 파일
 - pages/: 각 챕터별 HTML 콘텐츠 파일
 
 각 챕터는 하위 디렉토리(chapter1/, chapter2/ 등)로 구성되어 있으며, 챕터 개요 페이지(chapter1-overview.html 등)가 별도로 존재합니다.
+
+## 향후 계획
+- [ ] 실제 기사 평가 API 연동
+- [ ] 사용자 계정 시스템 구축
+- [ ] 평가 결과 아카이브 기능
+- [ ] 모바일 앱 개발
+- [ ] 다국어 지원 (영어, 일본어)
+- [ ] 실시간 뉴스 피드 연동
+- [ ] 커뮤니티 기능 (댓글, 토론)
+- [ ] 평가 결과 공유 기능
+- [ ] 브라우저 확장 프로그램 개발
+- [ ] 언론사별 평가 대시보드 구축
