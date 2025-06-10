@@ -2,191 +2,199 @@
  * 콘텐츠 로더 스크립트
  * 노션 HTML 파일을 동적으로 로드하는 기능을 담당합니다.
  */
+
+// 파일 경로 매핑 객체 (전역으로 이동)
+const contentMapping = {
+    'welcome': 'pages/welcome.html',
+    'change': 'pages/welcome.html',
+    // 탭 개요 페이지 추가 (기존 매핑 앞에 추가)
+    'chapter1-overview': 'pages/chapter1-overview.html',
+    'chapter2-overview': 'pages/chapter2-overview.html',
+    'chapter3-overview': 'pages/chapter3-overview.html',
+    'chapter4-overview': 'pages/chapter4-overview.html',
+
+    // 챕터 1 (프로젝트: 배경)
+    'prologue': 'pages/chapter1/ch1_00.html',
+    'chapter1': 'pages/chapter1/ch1_01.html',
+    'chapter2': 'pages/chapter1/ch1_02.html',
+    'chapter3': 'pages/chapter1/ch1_03.html',
+    'chapter4': 'pages/chapter1/ch1_04.html',
+    'chapter5': 'pages/chapter1/ch1_05.html',
+    
+    // 챕터 2 (실행 계획)
+    'section1': 'pages/chapter2/ch2_01_00.html',          // 1. 로드맵 개요
+    'section2-1': 'pages/chapter2/ch2_01_01.html',      // 1-1. 기본 흐름
+    'section2-1-2': 'pages/chapter2/ch2_01_02.html',    // 1-2. 단계별 실행 계획
+    'section2': 'pages/chapter2/ch2_02_00_overview.html', // 2. 시민 전문가 네트워크 개요
+    'section2-0': 'pages/chapter2/ch2_02_00.html',      // 2-0. 기본 유닛 구성
+    'section2-1-1': 'pages/chapter2/ch2_02_01_01.html', // 2-1-1. 미디어 전문가
+    'section2-2-1': 'pages/chapter2/ch2_02_02_01.html', // 2-2-1. AI 전문가
+    'section2-2-2': 'pages/chapter2/ch2_02_02_02.html', // 2-2-2. 플랫폼 개발자
+    'section2-3-1': 'pages/chapter2/ch2_02_03_01.html', // 2-3-1. 법률 자문가
+    'section2-3-2': 'pages/chapter2/ch2_02_03_02.html', // 2-3-2. 경영 자문가
+    'section2-3-3': 'pages/chapter2/ch2_02_03_03.html', // 2-3-3. 홍보 전문가
+    'section3': 'pages/chapter2/ch2_03.html',          // 3. 벤치마킹 사례
+    'ch2_section3-1': 'pages/chapter2/ch2_03_01.html', // 벤치마킹: 글로벌 표준 확립 사례
+    'ch2_section3-2': 'pages/chapter2/ch2_03_02.html', // 벤치마킹: 비즈니스 모델 전환 사례
+    'ch2_section3-3': 'pages/chapter2/ch2_03_03.html', // 벤치마킹: 부분적 참고 사례
+    'ch2_section3-4': 'pages/chapter2/ch2_03_04.html', // 벤치마킹: 프로젝트를 위한 시사점
+    
+    // 챕터 3 (기술적 구현 방안) - 재배열 완료
+    'section3-1': 'pages/chapter3/ch3_01.html',      // 1. 문제적 보도 관행 분류
+    'section3-1-1': 'pages/chapter3/ch3_01_01.html', // 1-1. 진실성과 정확성
+    'section3-1-2': 'pages/chapter3/ch3_01_02.html', // 1-2. 투명성과 책임성
+    'section3-1-3': 'pages/chapter3/ch3_01_03.html', // 1-3. 균형성과 공정성
+    'section3-1-4': 'pages/chapter3/ch3_01_04.html', // 1-4. 독립성과 자율성
+    'section3-1-5': 'pages/chapter3/ch3_01_05.html', // 1-5. 인권과 프라이버시 존중
+    'section3-1-6': 'pages/chapter3/ch3_01_06.html', // 1-6. 전문성과 심층성
+    'section3-1-7': 'pages/chapter3/ch3_01_07.html', // 1-7. 언어와 표현의 윤리
+    'section3-1-8': 'pages/chapter3/ch3_01_08.html', // 1-8. 디지털 환경의 윤리
+    'section3-2': 'pages/chapter3/ch3_02.html',      // 2. 분류 체계 평가/검증
+    'section3-3': 'pages/chapter3/ch3_03.html',      // 3. 기사 유형 분류 및 평가 대상
+    'section3-4': 'pages/chapter3/ch3_04.html',      // 4. 다차원 매트릭스 기반 평가
+    'section3-5': 'pages/chapter3/ch3_05.html',      // 5. 규범 체계와 매트릭스 매칭
+    'section3-6': 'pages/chapter3/ch3_06.html',      // 6. 기술 적용 방식
+    'section3-6-1': 'pages/chapter3/ch3_06_01.html', // 6-1. AI 모델 전략 및 의사결정
+    'section3-6-2': 'pages/chapter3/ch3_06_02.html', // 6-2. 시스템 아키텍처 설계
+    'section3-6-3': 'pages/chapter3/ch3_06_03.html', // 6-3. 성능 최적화 및 패턴 인식 기술
+    'section3-7': 'pages/chapter3/ch3_07.html',      // 7. 프롬프트 기반 평가 시스템 구현
+    'section3-8': 'pages/chapter3/ch3_08.html',      // 8. 기사 심층성 평가 시스템
+    'section3-9': 'pages/chapter3/ch3_09.html',      // 9. 유형별 맞춤 평가
+    'section3-10': 'pages/chapter3/ch3_10.html',      // 10. 웹앱 서비스 흐름
+    'section3-10-1': 'pages/chapter3/ch3_10_01.html', // 10-1. 사용자 경험 흐름 설계
+    'section3-10-2': 'pages/chapter3/ch3_10_02.html', // 10-2. 결과 전달 및 시각화 시스템
+    'section3-10-3': 'pages/chapter3/ch3_10_03.html', // 10-3. 서비스 안정성 및 확장성
+    'section3-10-4': 'pages/chapter3/ch3_10_04.html', // 10-4. 평가 리포트 모델
+    'section3-10-5': 'pages/chapter3/ch3_10_05.html', // 10-5. 평가 리포트 샘플(점수화)
+    'section3-11': 'pages/chapter3/ch3_11.html',      // 11. 평가 시스템 검증 및 품질 관리
+    'section3-12': 'pages/chapter3/ch3_12.html',      // 12. 법적 고려사항 및 개인정보 보호
+    'section3-13': 'pages/chapter3/ch3_13.html',      // 13. 미디어 비평 생태계 확장 전략
+    
+    // 챕터 4 (부록) - 수정
+    'section4-1-1': 'pages/chapter4/ch4_01_01.html', // 1-1. CR 소개
+    'section4-1-2': 'pages/chapter4/ch4_01_02.html', // 1-2. 언론 윤리 규범에 관한 대화
+    'section4-1-3': 'pages/chapter4/ch4_01_03.html', // 1-3. 점수화 없는 CR 프로젝트
+    'section4-1-4': 'pages/chapter4/ch4_01_04.html', // 1-4. 평가 리포트 샘플
+    'section4-1-5': 'pages/chapter4/ch4_01_05.html', // 1-5. 플랫폼 구축 3단계 시나리오
+    'section4-2-1': 'pages/chapter4/ch4_02_01.html', // 2-1. CR 플랫폼 구조 설계
+    'section4-2-2': 'pages/chapter4/ch4_02_02.html', // 2-2. 웹앱 정보구조 설계 제안
+    'section4-2-3': 'pages/chapter4/ch4_02_03.html', // 2-3. 회원 관리 및 과금 방식
+    'section4-2-4': 'pages/chapter4/ch4_02_04.html', // 2-4. 나쁜 저널리즘 요소 식별 가이드
+    'section4-2-5': 'pages/chapter4/ch4_02_05.html', // 2-5. 문제적 표현 패턴 샘플
+    'section4-2-6': 'pages/chapter4/ch4_02_06.html', // 2-6. 평가 결과의 일관성 문제
+    'section4-3-1': 'pages/chapter4/ch4_03_01.html', // 3-1. 프롬프트 템플릿 시스템
+    'section4-3-2': 'pages/chapter4/ch4_03_02.html', // 3-2. 프롬프트 템플릿 초안
+    'section4-3-3': 'pages/chapter4/ch4_03_03.html', // 3-3. 기사 정보 수집 기술 가이드
+    'section4-3-4': 'pages/chapter4/ch4_03_04.html', // 3-4. 사용자 경험 시나리오
+    'section4-4-1': 'pages/chapter4/ch4_04_01.html', // 4-1. 아카이브 구축 가이드
+    'section4-4-2': 'pages/chapter4/ch4_04_02.html', // 4-2. 다른 비평 웹앱과의 연대
+    'section4-4-3': 'pages/chapter4/ch4_04_03.html', // 4-3. 비평 플랫폼 목록
+    'section4-4-4': 'pages/chapter4/ch4_04_04.html', // 4-4. 국제 연대가 필요한 이유
+    // 현재 주석 처리된 부분도 파일명 업데이트
+    'section5-1': 'pages/chapter4/ch4_05_01.html',   // 5-1. 참고 사이트
+    'section5-2': 'pages/chapter4/ch4_05_02.html',   // 5-2. 지금 우리에게 필요한 것
+    
+    // 기존 샘플 파일 (호환성 유지) - 업데이트
+    'section2-3': 'pages/chapter4/ch4_02_03.html'    // 2-3. 회원 관리 및 과금 방식
+};
+
+// 탭 매핑 정의 - 각 콘텐츠가 어떤 탭에 속하는지 지정 (전역으로 이동)
+const tabMapping = {
+    // 챕터 1 (프로젝트: 배경) 관련 콘텐츠
+    'welcome': 'I',
+    'change': 'I',
+    'chapter1-overview': 'I',
+    'prologue': 'I',
+    'chapter1': 'I',
+    'chapter2': 'I',
+    'chapter3': 'I',
+    'chapter4': 'I',
+    'chapter5': 'I',
+    
+    // 챕터 2 (실행 계획) 관련 콘텐츠
+    'chapter2-overview': 'II',
+    'section1': 'II',  // 로드맵 개요
+    'section2-1': 'II',
+    'section2-1-2': 'II',
+    'section2': 'II',  // 시민 전문가 네트워크 개요
+    'section2-0': 'II',
+    'section2-1-1': 'II',
+    'section2-2-1': 'II',
+    'section2-2-2': 'II',
+    'section2-3-1': 'II',
+    'section2-3-2': 'II',
+    'section2-3-3': 'II',
+    'section3': 'II',
+    'ch2_section3-1': 'II',
+    'ch2_section3-2': 'II',
+    'ch2_section3-3': 'II',
+    'ch2_section3-4': 'II',
+    
+    // 챕터 3 (기술적 구현 방안) 관련 콘텐츠
+    'chapter3-overview': 'III',
+    'section3-1': 'III',
+    'section3-1-1': 'III',
+    'section3-1-2': 'III',
+    'section3-1-3': 'III',
+    'section3-1-4': 'III',
+    'section3-1-5': 'III',
+    'section3-1-6': 'III',
+    'section3-1-7': 'III',
+    'section3-1-8': 'III',
+    'section3-2': 'III',
+    'section3-3': 'III',
+    'section3-4': 'III',
+    'section3-5': 'III',
+    'section3-6': 'III',
+    'section3-6-1': 'III',
+    'section3-6-2': 'III',
+    'section3-6-3': 'III',
+    'section3-7': 'III',
+    'section3-8': 'III',
+    'section3-9': 'III',
+    'section3-10': 'III',
+    'section3-10-1': 'III',
+    'section3-10-2': 'III',
+    'section3-10-3': 'III',
+    'section3-10-4': 'III',
+    'section3-10-5': 'III',
+    'section3-11': 'III',
+    'section3-12': 'III',
+    'section3-13': 'III',
+    
+    // 챕터 4 (부록) 관련 콘텐츠
+    'chapter4-overview': 'appendix',
+    'section4-1-1': 'appendix',
+    'section4-1-2': 'appendix',
+    'section4-1-3': 'appendix',
+    'section4-1-4': 'appendix',
+    'section4-1-5': 'appendix',
+    'section4-2-1': 'appendix',
+    'section4-2-2': 'appendix',
+    'section4-2-3': 'appendix',
+    'section4-2-4': 'appendix',
+    'section4-2-5': 'appendix',
+    'section4-2-6': 'appendix',
+    'section4-3-1': 'appendix',
+    'section4-3-2': 'appendix',
+    'section4-3-3': 'appendix',
+    'section4-3-4': 'appendix',
+    'section4-4-1': 'appendix',
+    'section4-4-2': 'appendix',
+    'section4-4-3': 'appendix',
+    'section4-4-4': 'appendix',
+    'section5-1': 'appendix',
+    'section5-2': 'appendix',
+    'section2-3': 'appendix'  // 기존 샘플 파일 매핑 추가
+};
+
+// 무한 루프 방지를 위한 플래그
+let isLoadingContent = false;
+
 document.addEventListener('DOMContentLoaded', function() {
     // 콘텐츠 링크 클릭 이벤트 처리
     const contentLinks = document.querySelectorAll('.content-link');
     const contentContainer = document.getElementById('content-container');
-    
-    // 파일 경로 매핑 객체
-    const contentMapping = {
-        'change': 'pages/welcome.html',
-        // 탭 개요 페이지 추가 (기존 매핑 앞에 추가)
-        'chapter1-overview': 'pages/chapter1-overview.html',
-        'chapter2-overview': 'pages/chapter2-overview.html',
-        'chapter3-overview': 'pages/chapter3-overview.html',
-        'chapter4-overview': 'pages/chapter4-overview.html',
-
-        // 챕터 1 (프로젝트: 배경)
-        'prologue': 'pages/chapter1/ch1_00.html',
-        'chapter1': 'pages/chapter1/ch1_01.html',
-        'chapter2': 'pages/chapter1/ch1_02.html',
-        'chapter3': 'pages/chapter1/ch1_03.html',
-        'chapter4': 'pages/chapter1/ch1_04.html',
-        'chapter5': 'pages/chapter1/ch1_05.html',
-        
-        // 챕터 2 (실행 계획)
-        'section1': 'pages/chapter2/ch2_01_00.html',          // 1. 로드맵 개요
-        'section2-1': 'pages/chapter2/ch2_01_01.html',      // 1-1. 기본 흐름
-        'section2-1-2': 'pages/chapter2/ch2_01_02.html',    // 1-2. 단계별 실행 계획
-        'section2': 'pages/chapter2/ch2_02_00_overview.html', // 2. 시민 전문가 네트워크 개요
-        'section2-0': 'pages/chapter2/ch2_02_00.html',      // 2-0. 기본 유닛 구성
-        'section2-1-1': 'pages/chapter2/ch2_02_01_01.html', // 2-1-1. 미디어 전문가
-        'section2-2-1': 'pages/chapter2/ch2_02_02_01.html', // 2-2-1. AI 전문가
-        'section2-2-2': 'pages/chapter2/ch2_02_02_02.html', // 2-2-2. 플랫폼 개발자
-        'section2-3-1': 'pages/chapter2/ch2_02_03_01.html', // 2-3-1. 법률 자문가
-        'section2-3-2': 'pages/chapter2/ch2_02_03_02.html', // 2-3-2. 경영 자문가
-        'section2-3-3': 'pages/chapter2/ch2_02_03_03.html', // 2-3-3. 홍보 전문가
-        'section3': 'pages/chapter2/ch2_03.html',          // 3. 벤치마킹 사례
-        'ch2_section3-1': 'pages/chapter2/ch2_03_01.html', // 벤치마킹: 글로벌 표준 확립 사례
-        'ch2_section3-2': 'pages/chapter2/ch2_03_02.html', // 벤치마킹: 비즈니스 모델 전환 사례
-        'ch2_section3-3': 'pages/chapter2/ch2_03_03.html', // 벤치마킹: 부분적 참고 사례
-        'ch2_section3-4': 'pages/chapter2/ch2_03_04.html', // 벤치마킹: 프로젝트를 위한 시사점
-        
-        // 챕터 3 (기술적 구현 방안) - 재배열 완료
-        'section3-1': 'pages/chapter3/ch3_01.html',      // 1. 문제적 보도 관행 분류
-        'section3-1-1': 'pages/chapter3/ch3_01_01.html', // 1-1. 진실성과 정확성
-        'section3-1-2': 'pages/chapter3/ch3_01_02.html', // 1-2. 투명성과 책임성
-        'section3-1-3': 'pages/chapter3/ch3_01_03.html', // 1-3. 균형성과 공정성
-        'section3-1-4': 'pages/chapter3/ch3_01_04.html', // 1-4. 독립성과 자율성
-        'section3-1-5': 'pages/chapter3/ch3_01_05.html', // 1-5. 인권과 프라이버시 존중
-        'section3-1-6': 'pages/chapter3/ch3_01_06.html', // 1-6. 전문성과 심층성
-        'section3-1-7': 'pages/chapter3/ch3_01_07.html', // 1-7. 언어와 표현의 윤리
-        'section3-1-8': 'pages/chapter3/ch3_01_08.html', // 1-8. 디지털 환경의 윤리
-        'section3-2': 'pages/chapter3/ch3_02.html',      // 2. 분류 체계 평가/검증
-        'section3-3': 'pages/chapter3/ch3_03.html',      // 3. 기사 유형 분류 및 평가 대상
-        'section3-4': 'pages/chapter3/ch3_04.html',      // 4. 다차원 매트릭스 기반 평가
-        'section3-5': 'pages/chapter3/ch3_05.html',      // 5. 규범 체계와 매트릭스 매칭
-        'section3-6': 'pages/chapter3/ch3_06.html',      // 6. 기술 적용 방식
-        'section3-6-1': 'pages/chapter3/ch3_06_01.html', // 6-1. AI 모델 전략 및 의사결정
-        'section3-6-2': 'pages/chapter3/ch3_06_02.html', // 6-2. 시스템 아키텍처 설계
-        'section3-6-3': 'pages/chapter3/ch3_06_03.html', // 6-3. 성능 최적화 및 패턴 인식 기술
-        'section3-7': 'pages/chapter3/ch3_07.html',      // 7. 프롬프트 기반 평가 시스템 구현
-        'section3-8': 'pages/chapter3/ch3_08.html',      // 8. 기사 심층성 평가 시스템
-        'section3-9': 'pages/chapter3/ch3_09.html',      // 9. 유형별 맞춤 평가
-        'section3-10': 'pages/chapter3/ch3_10.html',      // 10. 웹앱 서비스 흐름
-        'section3-10-1': 'pages/chapter3/ch3_10_01.html', // 10-1. 사용자 경험 흐름 설계
-        'section3-10-2': 'pages/chapter3/ch3_10_02.html', // 10-2. 결과 전달 및 시각화 시스템
-        'section3-10-3': 'pages/chapter3/ch3_10_03.html', // 10-3. 서비스 안정성 및 확장성
-        'section3-10-4': 'pages/chapter3/ch3_10_04.html', // 10-4. 평가 리포트 모델
-        'section3-10-5': 'pages/chapter3/ch3_10_05.html', // 10-5. 평가 리포트 샘플(점수화)
-        'section3-11': 'pages/chapter3/ch3_11.html',      // 11. 평가 시스템 검증 및 품질 관리
-        'section3-12': 'pages/chapter3/ch3_12.html',      // 12. 법적 고려사항 및 개인정보 보호
-        'section3-13': 'pages/chapter3/ch3_13.html',      // 13. 미디어 비평 생태계 확장 전략
-        
-        // 챕터 4 (부록) - 수정
-        'section4-1-1': 'pages/chapter4/ch4_01_01.html', // 1-1. CR 소개
-        'section4-1-2': 'pages/chapter4/ch4_01_02.html', // 1-2. 언론 윤리 규범에 관한 대화
-        'section4-1-3': 'pages/chapter4/ch4_01_03.html', // 1-3. 점수화 없는 CR 프로젝트
-        'section4-1-4': 'pages/chapter4/ch4_01_04.html', // 1-4. 평가 리포트 샘플
-        'section4-1-5': 'pages/chapter4/ch4_01_05.html', // 1-5. 플랫폼 구축 3단계 시나리오
-        'section4-2-1': 'pages/chapter4/ch4_02_01.html', // 2-1. CR 플랫폼 구조 설계
-        'section4-2-2': 'pages/chapter4/ch4_02_02.html', // 2-2. 웹앱 정보구조 설계 제안
-        'section4-2-3': 'pages/chapter4/ch4_02_03.html', // 2-3. 회원 관리 및 과금 방식
-        'section4-2-4': 'pages/chapter4/ch4_02_04.html', // 2-4. 나쁜 저널리즘 요소 식별 가이드
-        'section4-2-5': 'pages/chapter4/ch4_02_05.html', // 2-5. 문제적 표현 패턴 샘플
-        'section4-2-6': 'pages/chapter4/ch4_02_06.html', // 2-6. 평가 결과의 일관성 문제
-        'section4-3-1': 'pages/chapter4/ch4_03_01.html', // 3-1. 프롬프트 템플릿 시스템
-        'section4-3-2': 'pages/chapter4/ch4_03_02.html', // 3-2. 프롬프트 템플릿 초안
-        'section4-3-3': 'pages/chapter4/ch4_03_03.html', // 3-3. 기사 정보 수집 기술 가이드
-        'section4-3-4': 'pages/chapter4/ch4_03_04.html', // 3-4. 사용자 경험 시나리오
-        'section4-4-1': 'pages/chapter4/ch4_04_01.html', // 4-1. 아카이브 구축 가이드
-        'section4-4-2': 'pages/chapter4/ch4_04_02.html', // 4-2. 다른 비평 웹앱과의 연대
-        'section4-4-3': 'pages/chapter4/ch4_04_03.html', // 4-3. 비평 플랫폼 목록
-        'section4-4-4': 'pages/chapter4/ch4_04_04.html', // 4-4. 국제 연대가 필요한 이유
-        // 현재 주석 처리된 부분도 파일명 업데이트
-        'section5-1': 'pages/chapter4/ch4_05_01.html',   // 5-1. 참고 사이트
-        'section5-2': 'pages/chapter4/ch4_05_02.html',   // 5-2. 지금 우리에게 필요한 것
-        
-        // 기존 샘플 파일 (호환성 유지) - 업데이트
-        'section2-3': 'pages/chapter4/ch4_02_03.html'    // 2-3. 회원 관리 및 과금 방식
-    };
-    
-    // 탭 매핑 정의 - 각 콘텐츠가 어떤 탭에 속하는지 지정
-    const tabMapping = {
-        // 챕터 1 (프로젝트: 배경) 관련 콘텐츠
-        'change': 'I',
-        'chapter1-overview': 'I',
-        'prologue': 'I',
-        'chapter1': 'I',
-        'chapter2': 'I',
-        'chapter3': 'I',
-        'chapter4': 'I',
-        'chapter5': 'I',
-        
-        // 챕터 2 (실행 계획) 관련 콘텐츠
-        'chapter2-overview': 'II',
-        'section1': 'II',  // 로드맵 개요
-        'section2-1': 'II',
-        'section2-1-2': 'II',
-        'section2': 'II',  // 시민 전문가 네트워크 개요
-        'section2-0': 'II',
-        'section2-1-1': 'II',
-        'section2-2-1': 'II',
-        'section2-2-2': 'II',
-        'section2-3-1': 'II',
-        'section2-3-2': 'II',
-        'section2-3-3': 'II',
-        'section3': 'II',
-        'ch2_section3-1': 'II',
-        'ch2_section3-2': 'II',
-        'ch2_section3-3': 'II',
-        'ch2_section3-4': 'II',
-        
-        // 챕터 3 (기술적 구현 방안) 관련 콘텐츠
-        'chapter3-overview': 'III',
-        'section3-1': 'III',
-        'section3-1-1': 'III',
-        'section3-1-2': 'III',
-        'section3-1-3': 'III',
-        'section3-1-4': 'III',
-        'section3-1-5': 'III',
-        'section3-1-6': 'III',
-        'section3-1-7': 'III',
-        'section3-1-8': 'III',
-        'section3-2': 'III',
-        'section3-3': 'III',
-        'section3-4': 'III',
-        'section3-5': 'III',
-        'section3-6': 'III',
-        'section3-6-1': 'III',
-        'section3-6-2': 'III',
-        'section3-6-3': 'III',
-        'section3-7': 'III',
-        'section3-8': 'III',
-        'section3-9': 'III',
-        'section3-10': 'III',
-        'section3-10-1': 'III',
-        'section3-10-2': 'III',
-        'section3-10-3': 'III',
-        'section3-10-4': 'III',
-        'section3-10-5': 'III',
-        'section3-11': 'III',
-        'section3-12': 'III',
-        'section3-13': 'III',
-        
-        // 챕터 4 (부록) 관련 콘텐츠
-        'chapter4-overview': 'appendix',
-        'section4-1-1': 'appendix',
-        'section4-1-2': 'appendix',
-        'section4-1-3': 'appendix',
-        'section4-1-4': 'appendix',
-        'section4-1-5': 'appendix',
-        'section4-2-1': 'appendix',
-        'section4-2-2': 'appendix',
-        'section4-2-3': 'appendix',
-        'section4-2-4': 'appendix',
-        'section4-2-5': 'appendix',
-        'section4-2-6': 'appendix',
-        'section4-3-1': 'appendix',
-        'section4-3-2': 'appendix',
-        'section4-3-3': 'appendix',
-        'section4-3-4': 'appendix',
-        'section4-4-1': 'appendix',
-        'section4-4-2': 'appendix',
-        'section4-4-3': 'appendix',
-        'section4-4-4': 'appendix',
-        'section2-3': 'appendix'  // 기존 샘플 파일 매핑 추가
-    };
     
     // 콘텐츠 링크 클릭 이벤트 리스너 등록
     contentLinks.forEach(link => {
@@ -216,14 +224,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 콘텐츠 로드 함수
     function loadContent(contentId, sectionId = null) {
+        // 무한 루프 방지
+        if (isLoadingContent) {
+            return;
+        }
+        isLoadingContent = true;
+        
         // 로딩 메시지 표시
         contentContainer.innerHTML = '<div class="loading">콘텐츠를 불러오는 중입니다...</div>';
         
-        // 브라우저 히스토리에 현재 상태 추가
-        const state = { contentId: contentId, sectionId: sectionId };
-        const url = `#${contentId}${sectionId ? '-' + sectionId : ''}`;
-        history.pushState(state, '', url);
-
         // 콘텐츠 파일 경로 확인
         let contentPath = contentMapping[contentId];
         
@@ -251,6 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p>요청하신 콘텐츠(${contentId})를 찾을 수 없습니다.</p>
                     </div>
                 `;
+                isLoadingContent = false;
                 return;
             }
         }
@@ -319,8 +329,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 해당 콘텐츠에 맞는 탭 활성화
                     updateActiveTabForContent(contentId);
 
+                    // URL 해시 업데이트
+                    updateURLHash(contentId);
+
                     // welcome 페이지인 경우 애니메이션 실행
-                    if (contentId === 'change') {
+                    if (contentId === 'welcome' || contentId === 'change') {
                         // 약간의 지연 후 애니메이션 시작 (DOM이 완전히 렌더링되도록)
                         setTimeout(() => {
                         const paragraphs = document.querySelectorAll('.paragraph-container');
@@ -392,7 +405,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         }, 500);
                     }
 
-
                     // 코드 블록 하이라이팅 적용
                     setTimeout(() => {
                         // Python 코드 블록 처리
@@ -429,7 +441,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                             
                             // 하이라이팅 적용
-                            hljs.highlightElement(block);
+                            if (typeof hljs !== 'undefined') {
+                                hljs.highlightElement(block);
+                            }
                         });
                         
                         // pre > code 블록도 처리
@@ -442,7 +456,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                             
                         // 하이라이팅 적용
-                            hljs.highlightElement(block);
+                            if (typeof hljs !== 'undefined') {
+                                hljs.highlightElement(block);
+                            }
                         });
 
                         // 오디오 플레이어 초기화 (챕터1 페이지들)
@@ -451,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             contentId === 'chapter4' || contentId === 'chapter5') {
                             setTimeout(initAudioPlayer, 100);
                         }
-                    }, 500); // 시간을 좀 더 늘림
+                    }, 500);
 
                     // 특정 섹션으로 스크롤 (있는 경우)
                     if (sectionId) {
@@ -490,8 +506,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             } else {
                                 console.error(`섹션을 찾을 수 없음: ${sectionId}`);
                             }
-                        }, 500); // 콘텐츠가 완전히 로드된 후 스크롤하기 위한 지연 시간 증가
+                        }, 500);
                     }
+                    
+                    // 무한 루프 방지 플래그 해제
+                    isLoadingContent = false;
                 } else {
                     // 노션 콘텐츠를 찾을 수 없는 경우
                     contentContainer.innerHTML = `
@@ -500,6 +519,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p>노션 콘텐츠를 추출할 수 없습니다. 파일 형식을 확인해주세요.</p>
                         </div>
                     `;
+                    isLoadingContent = false;
                 }
             })
             .catch(error => {
@@ -510,6 +530,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p>${error.message}</p>
                     </div>
                 `;
+                isLoadingContent = false;
             });
     }
     
@@ -564,29 +585,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    
-    // 브라우저의 뒤로가기/앞으로가기 이벤트 처리
-    window.addEventListener('popstate', function(event) {
-        if (event.state) {
-            // 히스토리 상태가 있으면 해당 콘텐츠 로드
-            loadContent(event.state.contentId, event.state.sectionId);
-        } else {
-            // 초기 상태로 돌아가면 welcome 페이지 로드
-            loadContent('welcome');
-        }
-    });
 
-    // 초기 URL 파싱 (페이지 새로고침 시 대응)
-    if (window.location.hash) {
-        const hashParts = window.location.hash.substring(1).split('-');
-        const contentId = hashParts[0];
-        const sectionId = hashParts.length > 1 ? hashParts.slice(1).join('-') : null;
-        loadContent(contentId, sectionId);
-    } else {
-        // 이미 welcome 페이지를 로드하므로 여기서는 아무 작업도 하지 않음
-    }
-
-// 오디오 플레이어 초기화 함수 (범용)
+    // 오디오 플레이어 초기화 함수 (범용)
     function initAudioPlayer() {
         // 페이지 내 모든 오디오 토글 버튼 찾기
         const audioButtons = document.querySelectorAll('.audio-toggle-btn');
@@ -640,4 +640,73 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // loadContent 함수를 전역으로 노출
     window.loadContent = loadContent;
+    
+    // 초기 페이지 로드 또는 Hash 라우터 초기화
+    initHashRouter();
 });
+
+// URL Hash 라우팅 함수들
+function initHashRouter() {
+    // 페이지 로드 시 해시 확인
+    const hash = window.location.hash.substring(1); // # 제거
+    if (hash && contentMapping[hash]) {
+        // window.loadContent가 존재하는지 확인
+        if (typeof window.loadContent === 'function') {
+            window.loadContent(hash);
+        } else {
+            // DOMContentLoaded 후에 다시 시도
+            setTimeout(() => {
+                if (typeof window.loadContent === 'function') {
+                    window.loadContent(hash);
+                }
+            }, 100);
+        }
+    } else {
+        // 해시가 없으면 기본 welcome 페이지 로드
+        setTimeout(() => {
+            if (typeof window.loadContent === 'function') {
+                window.loadContent('welcome');
+            }
+        }, 100);
+    }
+    
+    // 해시 변경 시 콘텐츠 로드
+    window.addEventListener('hashchange', function() {
+        if (isLoadingContent) return; // 로딩 중이면 무시
+        
+        const newHash = window.location.hash.substring(1);
+        if (newHash && contentMapping[newHash]) {
+            if (typeof window.loadContent === 'function') {
+                window.loadContent(newHash);
+            }
+        }
+    });
+}
+
+// 브라우저의 뒤로가기/앞으로가기 이벤트 처리
+window.addEventListener('popstate', function(event) {
+    if (isLoadingContent) return; // 로딩 중이면 무시
+    
+    // URL 해시에서 콘텐츠 ID 추출
+    const hash = window.location.hash.substring(1);
+    if (hash && contentMapping[hash]) {
+        if (typeof window.loadContent === 'function') {
+            window.loadContent(hash);
+        }
+    } else {
+        // 해시가 없으면 welcome 페이지로
+        if (typeof window.loadContent === 'function') {
+            window.loadContent('welcome');
+        }
+    }
+});
+
+// URL 해시 업데이트 함수
+function updateURLHash(contentId) {
+    // 현재 해시와 다를 때만 업데이트 (무한 루프 방지)
+    const currentHash = window.location.hash.substring(1);
+    if (currentHash !== contentId && !isLoadingContent) {
+        // replaceState 사용하여 히스토리에 추가하지 않고 URL만 업데이트
+        window.history.replaceState(null, null, '#' + contentId);
+    }
+}
