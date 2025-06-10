@@ -705,8 +705,8 @@ window.addEventListener('popstate', function(event) {
 function updateURLHash(contentId) {
     // 현재 해시와 다를 때만 업데이트 (무한 루프 방지)
     const currentHash = window.location.hash.substring(1);
-    if (currentHash !== contentId && !isLoadingContent) {
-        // replaceState 사용하여 히스토리에 추가하지 않고 URL만 업데이트
-        window.history.replaceState(null, null, '#' + contentId);
+    if (currentHash !== contentId) {
+        // pushState 사용하여 브라우저 히스토리에 추가
+        window.history.pushState(null, null, '#' + contentId);
     }
 }
