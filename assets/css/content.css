@@ -752,3 +752,24 @@ blockquote .bulleted-list li:before {
 .audio-toggle-btn:hover .speaker-icon {
     fill: #333;
 }
+
+/* 우측 여백이 있는 이미지 컨테이너 */
+.image-with-margin {
+    margin-right: 35%;  /* 우측 여백 35% */
+    margin-bottom: 1em;
+    margin-top: 1em;    /* 위 요소와의 간격 */
+}
+
+.image-with-margin img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;   /* 이미지 모서리 직각 유지 */
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .image-with-margin {
+        margin-right: 0%;  /* 모바일에서는 여백 축소 */
+    }
+}
