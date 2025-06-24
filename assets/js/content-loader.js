@@ -649,15 +649,33 @@ document.addEventListener('DOMContentLoaded', function() {
 function initHashRouter() {
     // 페이지 로드 시 해시 확인
     const hash = window.location.hash.substring(1); // # 제거
-    if (hash && contentMapping[hash]) {
-        // window.loadContent가 존재하는지 확인
-        if (typeof window.loadContent === 'function') {
-            window.loadContent(hash);
+    if (hash) {
+        let contentId, sectionId;
+        
+        // 섹션 포함 해시 처리
+        if (hash.includes('-section-')) {
+            [contentId, sectionId] = hash.split('-section-');
         } else {
-            // DOMContentLoaded 후에 다시 시도
+            contentId = hash;
+        }
+        
+        if (contentMapping[contentId]) {
+            // window.loadContent가 존재하는지 확인
+            if (typeof window.loadContent === 'function') {
+                window.loadContent(contentId, sectionId);
+            } else {
+                // DOMContentLoaded 후에 다시 시도
+                setTimeout(() => {
+                    if (typeof window.loadContent === 'function') {
+                        window.loadContent(contentId, sectionId);
+                    }
+                }, 100);
+            }
+        } else {
+            // 해시가 있지만 매핑되지 않은 경우 welcome 페이지
             setTimeout(() => {
                 if (typeof window.loadContent === 'function') {
-                    window.loadContent(hash);
+                    window.loadContent('welcome');
                 }
             }, 100);
         }
@@ -675,9 +693,19 @@ function initHashRouter() {
         if (isLoadingContent) return; // 로딩 중이면 무시
         
         const newHash = window.location.hash.substring(1);
-        if (newHash && contentMapping[newHash]) {
-            if (typeof window.loadContent === 'function') {
-                window.loadContent(newHash);
+        if (newHash) {
+            let contentId, sectionId;
+            
+            if (newHash.includes('-section-')) {
+                [contentId, sectionId] = newHash.split('-section-');
+            } else {
+                contentId = newHash;
+            }
+            
+            if (contentMapping[contentId]) {
+                if (typeof window.loadContent === 'function') {
+                    window.loadContent(contentId, sectionId);
+                }
             }
         }
     });
