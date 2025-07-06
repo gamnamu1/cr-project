@@ -773,3 +773,78 @@ blockquote .bulleted-list li:before {
         margin-right: 0%;  /* 모바일에서는 여백 축소 */
     }
 }
+
+/* 기본 툴팁 스타일 */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    color: #577ec3;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 툴팁 텍스트 박스 */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: left;
+    border-radius: 6px;
+    padding: 15px;
+    
+    /* 위치 설정 */
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -150px;
+    
+    /* 폰트 및 텍스트 스타일 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    
+    /* 그림자 및 효과 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* 화살표 생성 */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #f8f9fa transparent transparent transparent;
+}
+
+/* 호버 시 툴팁 표시 */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 출처 정보 스타일 */
+.tooltip .tooltiptext .source {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    font-style: italic;
+    color: #666;
+    font-size: 90%;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .tooltip .tooltiptext {
+        width: 250px;
+        margin-left: -125px;
+        font-size: 13px;
+    }
+}
