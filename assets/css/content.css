@@ -848,3 +848,12 @@ blockquote .bulleted-list li:before {
         font-size: 13px;
     }
 }
+
+/* 모바일 환경에서만 특별 적용 */
+@media (max-width: 768px) {
+    .tooltip {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+}
