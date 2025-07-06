@@ -849,11 +849,13 @@ blockquote .bulleted-list li:before {
     }
 }
 
-/* 모바일 환경에서만 특별 적용 */
+/* 모바일 환경에서 링크 줄바꿈 강제 적용 */
 @media (max-width: 768px) {
     .tooltip {
-        word-break: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
+        display: inline !important; /* inline-block을 강제로 덮어씀 */
+        word-break: break-all !important; /* break-word보다 더 강력한 설정 */
+        overflow-wrap: break-word !important;
+        white-space: normal !important; /* 줄바꿈 허용 */
+        hyphens: auto !important;
     }
 }
