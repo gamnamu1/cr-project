@@ -859,3 +859,12 @@ blockquote .bulleted-list li:before {
         hyphens: auto !important;
     }
 }
+
+/* 밑줄 없는 링크용 클래스 */
+.content-link.no-underline {
+    text-decoration: none;
+}
+
+.content-link.no-underline:hover {
+    text-decoration: none; /* 호버 시에도 밑줄 없음 */
+}
