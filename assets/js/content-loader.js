@@ -86,7 +86,7 @@ const contentMapping = {
     'section4-3-2': 'pages/chapter4/ch4_03_02.html', // 3-2. 프롬프트 템플릿 초안
     'section4-3-3': 'pages/chapter4/ch4_03_03.html', // 3-3. 기사 정보 수집 기술 가이드
     'section4-3-4': 'pages/chapter4/ch4_03_04.html', // 3-4. 사용자 경험 시나리오
-    'section4-4-0': 'pages/chapter4/ch4_04_00.html', // 4-4-0. CR 연계 정책 제안서
+    'section4-4-0': 'pages/chapter4/ch4_04_00.html', // 4-0. 자율규제 도구로 활용(제안)
     'section4-4-1': 'pages/chapter4/ch4_04_01.html', // 4-1. 아카이브 구축 가이드
     'section4-4-2': 'pages/chapter4/ch4_04_02.html', // 4-2. 다른 비평 웹앱과의 연대
     'section4-4-3': 'pages/chapter4/ch4_04_03.html', // 4-3. 비평 플랫폼 목록
