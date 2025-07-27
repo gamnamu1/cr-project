@@ -16,7 +16,8 @@ cr_project/
 │   │   ├── cr_podcast1.mp3
 │   │   ├── cr_podcast2.mp3
 │   │   ├── cr_podcast3.mp3
-│   │   └── cr_podcast4.mp3
+│   │   ├── cr_podcast4.mp3
+│   │   └── cr_podcast7.mp3
 │   ├── css/
 │   │   ├── content/
 │   │   ├── content.css
@@ -109,6 +110,7 @@ cr_project/
     │   ├── ch4_03_02.html (3-2. 프롬프트 템플릿 초안 (샘플))
     │   ├── ch4_03_03.html (3-3. 기사 정보 수집 기술 가이드)
     │   ├── ch4_03_04.html (3-4. 사용자 경험 시나리오)
+    │   ├── ch4_04_01.html (4-0. [제안] 자율규제 도구로 활용)
     │   ├── ch4_04_01.html (4-1. 아카이브 구축 가이드)
     │   ├── ch4_04_02.html (4-2. 다른 비평 웹앱과의 연대 아이디어)
     │   ├── ch4_04_03.html (4-3. 이어 생겨날 비평 플랫폼 목록)
