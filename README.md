@@ -17,7 +17,8 @@ cr_project/
 │   │   ├── cr_podcast2.mp3
 │   │   ├── cr_podcast3.mp3
 │   │   ├── cr_podcast4.mp3
-│   │   └── cr_podcast7.mp3
+│   │   ├── cr_podcast7.mp3
+│   │   └── cr_podcast8.mp3
 │   ├── css/
 │   │   ├── content/
 │   │   ├── content.css
