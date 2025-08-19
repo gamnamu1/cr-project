@@ -32,7 +32,9 @@ cr_project/
 │   ├── images/
 │   │   ├── blueprint-bg.jpg
 │   │   ├── chapter1-front.jpg
-│   │   └── chapter2-front.jpg
+│   │   ├── chapter2-front.jpg
+│   │   ├── chapter3-front.jpg
+│   │   └── chapter4-front.jpg
 │   └── js/
 │       ├── app.js
 │       ├── content-loader.js
@@ -40,14 +42,15 @@ cr_project/
 ├── index.html (CR 프로젝트)
 └── pages/
     ├── chapter1/
+    │   ├── chapter1-overview.html (I. 프로젝트: 배경)
     │   ├── ch1_00.html (프롤로그. 왜 우리 사회는 바뀌지 않는가?)
     │   ├── ch1_01.html (1. 언론은 어떻게 한국사회를 좀먹고 있는가?)
     │   ├── ch1_02.html (2. 언론은 왜 제역할을 하지 못하는가?)
     │   ├── ch1_03.html (3. 누가 언론을 바꿀 수 있을까?)
     │   ├── ch1_04.html (4. 시민이 주도하는 언론 개혁, 어떻게 실현할까?)
     │   └── ch1_05.html (5. 집단적 상상과 실천으로!)
-    ├── chapter1-overview.html (I. 프로젝트: 배경)
     ├── chapter2/
+    │   ├── chapter2-overview.html (II. 실행 계획)
     │   ├── ch2_01_01.html (1-1. 기본 흐름)
     │   ├── ch2_01_02.html (1-2. 단계별 실행 계획)
     │   ├── ch2_02_00.html (2-0. 핵심 인력(초기) 구성 개요)
@@ -62,8 +65,8 @@ cr_project/
     │   ├── ch2_03_02.html (3-2. 비즈니스 모델 전환)
     │   ├── ch2_03_03.html (3-3. 부분적 참고 사례)
     │   └── ch2_03_04.html (3-4. 프로젝트를 위한 시사점)
-    ├── chapter2-overview.html (II. 실행 계획)
     ├── chapter3/
+    │   ├── chapter3-overview.html (III. 기술적 구현 방안)
     │   ├── ch3_01.html (1. 문제적 보도 관행 분류)
     │   ├── ch3_01_01.html (1-1. 진실성과 정확성)
     │   ├── ch3_01_02.html (1-2. 투명성과 책임성)
@@ -93,8 +96,8 @@ cr_project/
     │   ├── ch3_11.html (11. 평가 시스템 검증 및 품질 관리)
     │   ├── ch3_12.html (12. 법적 고려사항 및 개인정보 보호)
     │   └── ch3_13.html (13. 미디어 비평 생태계 확장 전략)
-    ├── chapter3-overview.html (III. 기술적 구현 방안)
     ├── chapter4/
+    │   ├── chapter4-overview.html (IV. 부록)
     │   ├── ch4_01_01.html (1-1. CR 소개 &ldquo;참여를 고민하는 시민 전문가에게&hellip;&rdquo;)
     │   ├── ch4_01_02.html (1-2. 언론 윤리 규범에 관한 대화)
     │   ├── ch4_01_03.html (1-3. 점수화 없는 CR 프로젝트)
@@ -110,14 +113,14 @@ cr_project/
     │   ├── ch4_03_02.html (3-2. 프롬프트 템플릿 초안 (샘플))
     │   ├── ch4_03_03.html (3-3. 기사 정보 수집 기술 가이드)
     │   ├── ch4_03_04.html (3-4. 사용자 경험 시나리오)
-    │   ├── ch4_04_01.html (4-0. [제안] 자율규제 도구로 활용)
+    │   ├── ch4_04_00.html (4-0. [제안] 자율규제 도구로 활용)
+    │   ├── ch4_04_00_01.html (4-0-1. [재요청] 답변에 대한 재요청)
     │   ├── ch4_04_01.html (4-1. 아카이브 구축 가이드)
     │   ├── ch4_04_02.html (4-2. 다른 비평 웹앱과의 연대 아이디어)
     │   ├── ch4_04_03.html (4-3. 이어 생겨날 비평 플랫폼 목록)
     │   ├── ch4_04_04.html (4-4. 국제적 연대가 필요한 이유와 의미)
     │   ├── ch4_05_01.html (5-1. 참고 사이트)
     │   └── ch4_05_02.html (5-2. 지금 우리에게 필요한 것···)
-    ├── chapter4-overview.html (IV. 부록)
     └── welcome.html (CR 프로젝트)
 ```
 
