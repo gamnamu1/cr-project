@@ -7,18 +7,17 @@
     .nav-button-left {
       position: fixed;
       left: 360px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 50vh;
+      margin-top: -25px;
       z-index: 1000;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: left 0.3s ease, opacity 0.3s ease;
       opacity: 0.6;
     }
     
     .nav-button-left:hover {
       opacity: 1;
       left: 355px;
-      transform: translateY(-50%);
     }
     
     .nav-button-left img {
@@ -37,7 +36,6 @@
       }
       .nav-button-left:hover {
         left: 15px;
-        transform: translateY(-50%);
       }
     }
   </style>
