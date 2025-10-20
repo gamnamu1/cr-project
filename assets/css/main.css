@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'DaeAmLeeTaeJun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/DAEAM_LEE_TAE_JOON.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
 :root {
     --sidebar-width: 300px;
     --primary-color: #2c3e50;
@@ -328,4 +335,9 @@ p { margin-bottom: 1rem; }
     color: #8EEDC7;       /* 흰색(#ffffff)에서 옅은 녹색으로 변경 */
     opacity: 1;
     text-decoration: underline;  /* 밑줄은 유지 */
+}
+
+/* DaeAmLeeTaeJun 폰트 클래스 */
+.daeam {
+    font-family: 'DaeAmLeeTaeJun', 'Noto Sans KR', sans-serif;
 }
