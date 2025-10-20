@@ -899,7 +899,8 @@ blockquote .bulleted-list li:before {
 @media screen and (max-width: 768px) {
     .nav-button-left {
         left: 20px !important;
-        top: 60vh !important;
+        top: 380px !important;  /* 고정 픽셀 값 */
+        margin-top: 0 !important;  /* 기존 -25px 제거 */
     }
     .nav-button-left:hover {
         left: 15px !important;
