@@ -5,19 +5,19 @@
   <style>
     /* 네비게이션 버튼 기본 스타일 */
     .nav-button-left {
-      position: fixed;
-      left: 360px;
-      top: 50vh;
-      margin-top: -25px;
-      z-index: 1000;
-      cursor: pointer;
-      transition: left 0.3s ease, opacity 0.3s ease;
-      opacity: 0.6;
+      position: fixed !important;
+      left: 360px !important;
+      top: 50vh !important;
+      margin-top: -25px !important;
+      z-index: 1000 !important;
+      cursor: pointer !important;
+      transition: left 0.3s ease, opacity 0.3s ease !important;
+      opacity: 0.6 !important;
     }
     
     .nav-button-left:hover {
-      opacity: 1;
-      left: 355px;
+      opacity: 1 !important;
+      left: 355px !important;
     }
     
     .nav-button-left img {
@@ -32,10 +32,10 @@
     /* 모바일 환경에서 네비게이션 버튼 위치 조정 */
     @media screen and (max-width: 768px) {
       .nav-button-left {
-        left: 20px;
+        left: 20px !important;
       }
       .nav-button-left:hover {
-        left: 15px;
+        left: 15px !important;
       }
     }
   </style>
