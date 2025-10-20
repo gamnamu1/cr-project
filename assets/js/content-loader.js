@@ -5,6 +5,8 @@
 
 // 파일 경로 매핑 객체 (전역으로 이동)
 const contentMapping = {
+    // chapter0-overview.html를_히든으로 추가
+    'chapter0-overview': 'pages/chapter0-overview.html',
     'welcome': 'pages/welcome.html',
     'change': 'pages/welcome.html',
     // 탭 개요 페이지 추가 (기존 매핑 앞에 추가)
