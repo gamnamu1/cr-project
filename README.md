@@ -130,10 +130,15 @@ cr_project/
 ## 프로젝트 개요
 - **목적**: 시민이 주도하는 뉴스 신뢰도 평가 플랫폼 구축
 - **현재 상태**: 노션에서 내려받은 HTML 페이지들을 웹사이트로 통합한 프로젝트
-- **배포 환경**: 
-  - **저장소**: GitHub Repository
-  - **배포**: Netlify (https://cr-project.netlify.app/)
-  - **최종 도메인**: https://cr-project.org
+
+## 배포 환경
+- **저장소**: GitHub Repository (gamnamu1/cr-project )
+- **호스팅**: Netlify (자동 배포)
+- **도메인 등록**: 가비아 (cr-project.org)
+- **DNS/CDN**: Cloudflare
+- **프로덕션 URL**: https://cr-project.org
+- **Netlify URL**: https://cr-project.netlify.app/
+- **GitHub Pages URL**: https://gamnamu1.github.io/cr-project/ (백업 )
 
 ## 사이트 구조
 - **레이아웃**: 2단 구조 (좌측 사이드바 네비게이션 + 우측 콘텐츠 영역)
