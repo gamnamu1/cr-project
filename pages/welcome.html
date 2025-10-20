@@ -3,13 +3,36 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <title>CR 프로젝트</title>
   <style>
+    /* 네비게이션 버튼 기본 스타일 */
+    .nav-button-left {
+      position: fixed;
+      left: 360px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0.6;
+    }
+    
+    .nav-button-left:hover {
+      opacity: 1;
+      left: 355px;
+    }
+    
+    .nav-button-left img {
+      width: 50px;
+      height: 50px;
+      transition: opacity 0.3s ease;
+    }
+    
     /* 모바일 환경에서 네비게이션 버튼 위치 조정 */
     @media screen and (max-width: 768px) {
       .nav-button-left {
-        left: 20px !important;
+        left: 20px;
       }
       .nav-button-left:hover {
-        left: 15px !important;
+        left: 15px;
       }
     }
   </style>
@@ -17,8 +40,8 @@
  <body>
     <article class="page sans" id="welcome-page">
         <!-- 왼쪽 이동 버튼 -->
-        <a href="#" class="content-link nav-button nav-button-left" data-content="chapter0-overview" style="position: fixed; left: 360px; top: 50%; transform: translateY(-50%); z-index: 1000; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.left='355px'" onmouseout="this.style.opacity='0.6'; this.style.left='360px'">
-            <img src="../assets/leftrightbutton3left.svg" alt="이전 페이지" style="width: 50px; height: 50px; opacity: 0.6; transition: opacity 0.3s ease;">
+        <a href="#" class="content-link nav-button nav-button-left" data-content="chapter0-overview">
+            <img src="../assets/leftrightbutton3left.svg" alt="이전 페이지">
         </a>
         <div class="page-body" style="margin-top:2em;">
           <!-- 첫 번째 단락 -->
