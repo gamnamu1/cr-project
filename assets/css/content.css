@@ -868,3 +868,40 @@ blockquote .bulleted-list li:before {
 .content-link.no-underline:hover {
     text-decoration: none; /* 호버 시에도 밑줄 없음 */
 }
+
+
+/* 네비게이션 버튼 스타일 */
+.nav-button-left {
+    position: fixed !important;
+    left: 360px !important;
+    top: 50vh !important;
+    margin-top: -25px !important;
+    z-index: 1000 !important;
+    cursor: pointer !important;
+    opacity: 0.6 !important;
+    transition: left 0.3s ease, opacity 0.3s ease !important;
+}
+
+.nav-button-left:hover {
+    opacity: 1 !important;
+    left: 355px !important;
+}
+
+.nav-button-left img {
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+    display: block !important;
+}
+
+/* 모바일 환경에서 네비게이션 버튼 위치 조정 */
+@media screen and (max-width: 768px) {
+    .nav-button-left {
+        left: 20px !important;
+    }
+    .nav-button-left:hover {
+        left: 15px !important;
+    }
+}
+

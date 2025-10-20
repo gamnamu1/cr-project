@@ -43,58 +43,9 @@
  <body>
     <article class="page sans" id="welcome-page">
         <!-- 왼쪽 이동 버튼 -->
-        <a href="#" class="content-link nav-button nav-button-left" data-content="chapter0-overview" id="nav-btn-left">
-            <img src="../assets/leftrightbutton3left.svg" alt="이전 페이지" style="width: 50px; height: 50px; max-width: 50px; max-height: 50px; display: block;">
+        <a href="#" class="content-link nav-button nav-button-left" data-content="chapter0-overview">
+            <img src="../assets/leftrightbutton3left.svg" alt="이전 페이지">
         </a>
-        <script>
-        (function() {
-          var btn = document.getElementById('nav-btn-left');
-          if (!btn) return;
-          
-          // 기본 스타일 설정
-          btn.style.position = 'fixed';
-          btn.style.top = '50vh';
-          btn.style.marginTop = '-25px';
-          btn.style.zIndex = '1000';
-          btn.style.cursor = 'pointer';
-          btn.style.opacity = '0.6';
-          btn.style.transition = 'left 0.3s ease, opacity 0.3s ease';
-          
-          // 화면 크기에 따라 위치 설정
-          function updatePosition() {
-            if (window.innerWidth <= 768) {
-              btn.style.left = '20px';
-            } else {
-              btn.style.left = '360px';
-            }
-          }
-          
-          // 초기 위치 설정
-          updatePosition();
-          
-          // 화면 크기 변경 시 위치 업데이트
-          window.addEventListener('resize', updatePosition);
-          
-          // 호버 효과
-          btn.addEventListener('mouseover', function() {
-            this.style.opacity = '1';
-            if (window.innerWidth <= 768) {
-              this.style.left = '15px';
-            } else {
-              this.style.left = '355px';
-            }
-          });
-          
-          btn.addEventListener('mouseout', function() {
-            this.style.opacity = '0.6';
-            if (window.innerWidth <= 768) {
-              this.style.left = '20px';
-            } else {
-              this.style.left = '360px';
-            }
-          });
-        })();
-        </script>
         <div class="page-body" style="margin-top:2em;">
           <!-- 첫 번째 단락 -->
           <div class="">
