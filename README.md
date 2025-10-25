@@ -42,6 +42,7 @@ cr_project/
 │       └── welcome-animation.js
 ├── index.html (CR 프로젝트)
 └── pages/
+    │   ├── chapter0-overview.html (선언문)
     ├── chapter1/
     │   ├── chapter1-overview.html (I. 프로젝트: 배경)
     │   ├── ch1_00.html (프롤로그. 왜 우리 사회는 바뀌지 않는가?)
