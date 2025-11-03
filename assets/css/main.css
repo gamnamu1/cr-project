@@ -339,4 +339,8 @@ p { margin-bottom: 1rem; }
 /* DaeAmLeeTaeJun 폰트 클래스 */
 .daeam {
     font-family: 'DaeAmLeeTaeJun', 'Noto Sans KR', sans-serif;
+    font-size: 1.1em;
+    opacity: 0.85;
+    line-height: 2.2;
+    letter-spacing: 0.08em;
 }
