@@ -918,3 +918,51 @@ blockquote .bulleted-list li:before {
     left: 235px !important;
   }
 }
+
+/* --- chapter0-overview.html 전용 스타일 추가 --- */
+
+/* 페이지 설명 스타일 (ID로 한정) */
+#1dd66d03-70c6-80c3-9f97-d18fa0fc5444 .page-description {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-bottom: 2.5em;
+}
+
+/* .daeam 클래스 확장 (변형) */
+.daeam-highlight {
+    color: #446297;
+    opacity: 0.9;
+}
+
+.daeam-highlight-bold {
+    color: #446297;
+    font-weight: 500;
+    margin-bottom: 1.5em;
+}
+
+/* 인라인 span 스타일 */
+.text-highlight {
+    color: #446297;
+    opacity: 1 !important;
+    font-size: 1.05em;
+}
+
+.text-small-note {
+    font-size: 0.8em;
+    opacity: 0.85;
+}
+
+/* 여백(margin) 유틸리티 클래스 */
+.spacer-mb-1-5 {
+    margin-bottom: 1.5em;
+}
+
+.spacer-mb-2 {
+    margin-bottom: 2em;
+}
+
+.spacer-my-1 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+/* --- CSS 추가 끝 --- */
