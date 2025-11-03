@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'DaeAmLeeTaeJun';
-    /* 'gh'를 'npm'으로 변경하여 다른 CDN 서버에서 폰트를 불러옵니다. */
-    src: url('https://cdn.jsdelivr.net/npm/noonfonts_2312-1@1.1/DAEAM_LEE_TAE_JOON.woff2') format('woff2');
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/DAEAM_LEE_TAE_JOON.woff2') format('woff2');
     font-weight: normal;
     font-display: swap;
 }
@@ -337,11 +336,7 @@ p { margin-bottom: 1rem; }
     text-decoration: underline;  /* 밑줄은 유지 */
 }
 
-/* .daeam 폰트 기본 스타일 정의 --- */
+/* DaeAmLeeTaeJun 폰트 클래스 */
 .daeam {
     font-family: 'DaeAmLeeTaeJun', 'Noto Sans KR', sans-serif;
-    font-size: 1.1em;
-    opacity: 0.85;
-    line-height: 2.2;
-    letter-spacing: 0.08em;
 }
