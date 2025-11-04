@@ -21,6 +21,7 @@ cr_project/
 │   │   ├── cr_podcast4.mp3
 │   │   ├── cr_podcast7.mp3
 │   │   └── cr_podcast8.mp3
+│   │  
 │   ├── css/
 │   │   ├── content/
 │   │   ├── content.css
@@ -28,16 +29,19 @@ cr_project/
 │   │   ├── highlight.css
 │   │   ├── main.css
 │   │   ├── sidebar/
-│   │   └── sidebar.css 
+│   │   └── sidebar.css
+│   │  
 │   ├── evaluations/
 │   │   ├── user_guide.txt
 │   │   └── template.md
+│   │  
 │   ├── images/
 │   │   ├── blueprint-bg.jpg
 │   │   ├── chapter1-front.jpg
 │   │   ├── chapter2-front.jpg
 │   │   ├── chapter3-front.jpg
 │   │   └── chapter4-front.jpg
+│   │  
 │   └── js/
 │       ├── app.js
 │       ├── content-loader.js
