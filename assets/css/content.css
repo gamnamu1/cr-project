@@ -953,5 +953,7 @@ blockquote .bulleted-list li:before {
         gap: 12px; /* 모바일에서 간격 조정 */
         padding-right: 1em;
         font-size: 0.9em; /* 모바일에서 글자 크기 약간 줄임 */
+        line-height: 1em;
+        margin-top: 1.5em;
     }
 }
