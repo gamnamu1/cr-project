@@ -929,7 +929,7 @@ blockquote .bulleted-list li:before {
     flex-wrap: wrap; /* 공간 부족 시 줄바꿈 허용 */
     gap: 20px; /* 링크 사이 간격 */
     padding-right: 2em;
-    margin-top: 0;
+    margin-top: 0.2em;
     font-size: 1em;
 }
 
