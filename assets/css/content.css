@@ -918,3 +918,40 @@ blockquote .bulleted-list li:before {
     left: 235px !important;
   }
 }
+
+/* ===== Chapter 4 Overview 하단 링크 스타일 ===== */
+
+/* 링크 컨테이너 - PC 기본 스타일 */
+.chapter4-footer-links {
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    align-items: center;
+    flex-wrap: wrap; /* 공간 부족 시 줄바꿈 허용 */
+    gap: 20px; /* 링크 사이 간격 */
+    padding-right: 2em;
+    margin-top: 0;
+    font-size: 1em;
+}
+
+/* 개별 링크 스타일 */
+.chapter4-footer-links .footer-link {
+    opacity: 0.4;
+    text-decoration: none;
+    white-space: nowrap; /* 링크가 중간에 잘리지 않도록 */
+    transition: opacity 0.3s ease; /* 부드러운 호버 효과 */
+}
+
+.chapter4-footer-links .footer-link:hover {
+    opacity: 0.7; /* 마우스 올렸을 때 조금 더 진하게 */
+}
+
+/* 모바일 화면 대응 (768px 이하 ) */
+@media (max-width: 768px) {
+    .chapter4-footer-links {
+        flex-direction: column; /* 세로로 쌓기 */
+        align-items: flex-end; /* 오른쪽 정렬 유지 */
+        gap: 12px; /* 모바일에서 간격 조정 */
+        padding-right: 1em;
+        font-size: 0.9em; /* 모바일에서 글자 크기 약간 줄임 */
+    }
+}
