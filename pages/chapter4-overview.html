@@ -2,32 +2,6 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <title>IV. 부록</title>
-  <style>
-    /* PC에서 3개를 가로로 배치 */
-    @media (min-width: 769px) {
-      .footer-links-wrapper {
-        display: flex;
-        justify-content: flex-end;
-        gap: 1.5em;
-        padding-right: 2em;
-      }
-      .footer-links-wrapper p {
-        margin: 0;
-        padding: 0;
-      }
-    }
-    
-    /* 모바일에서 세로 배치 */
-    @media (max-width: 768px) {
-      .footer-links-wrapper p {
-        margin-bottom: 0.3em;
-        padding-right: 2em;
-      }
-      .footer-links-wrapper p:last-child {
-        margin-bottom: 0;
-      }
-    }
-  </style>
  </head>
  <body>
   <article class="page sans" id="chapter4-overview">
@@ -37,11 +11,37 @@
           <img src="assets/images/chapter4-front.jpg" alt="Revolution is now" />
         </div>
         
-        <div class="footer-links-wrapper">
-          <p class="" style="text-align:right; font-size:1em; opacity:0.4;"><span class="sans"><a href="mailto:oneofus@cr-project.org">⇠ 문의·의견 oneofus@cr-project.org</a></span></p>
-          <p class="" style="text-align:right; font-size:1em; opacity:0.4;"><span class="sans"><a href="https://forms.gle/a2yaY5gSjTahERGYA" target="_blank">기사 제보(구글폼) ⇣</a></span></p>
-          <p class="" style="text-align:right; font-size:1em; opacity:0.4;"><span class="sans"><a href="https://discord.gg/SmsxK6JSC5" target="_blank">디스코드 CR 커뮤니티 ⇡</a></span></p>
+        <div id="footer-links-container" style="text-align:right; padding-right:2em;">
+          <span style="font-size:1em; opacity:0.4;" class="sans"><a href="mailto:oneofus@cr-project.org">⇠ 문의·의견 oneofus@cr-project.org</a></span>
+          <span id="separator1" style="font-size:1em; opacity:0.4;">&nbsp;&nbsp;&nbsp;</span>
+          <span style="font-size:1em; opacity:0.4;" class="sans"><a href="https://forms.gle/a2yaY5gSjTahERGYA" target="_blank">기사 제보(구글폼) ⇣</a></span>
+          <span id="separator2" style="font-size:1em; opacity:0.4;">&nbsp;&nbsp;&nbsp;</span>
+          <span style="font-size:1em; opacity:0.4;" class="sans"><a href="https://discord.gg/SmsxK6JSC5" target="_blank">디스코드 CR 커뮤니티 ⇡</a></span>
         </div>
+        
+        <script>
+        function adjustFooterLinks() {
+          var container = document.getElementById('footer-links-container');
+          var separator1 = document.getElementById('separator1');
+          var separator2 = document.getElementById('separator2');
+          
+          if (window.innerWidth <= 768) {
+            // 모바일: 세로 배치
+            separator1.innerHTML = '<br>';
+            separator2.innerHTML = '<br>';
+          } else {
+            // PC: 가로 배치
+            separator1.innerHTML = '&nbsp;&nbsp;&nbsp;';
+            separator2.innerHTML = '&nbsp;&nbsp;&nbsp;';
+          }
+        }
+        
+        // 페이지 로드 시 실행
+        adjustFooterLinks();
+        
+        // 창 크기 변경 시 실행
+        window.addEventListener('resize', adjustFooterLinks);
+        </script>
         
         <!-- 여기에 투명한 링크 추가 -->
         <a href="javascript:void(0)" onclick="loadContent('section5-2'); return false;" 
