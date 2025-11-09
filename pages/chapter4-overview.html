@@ -2,16 +2,18 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <title>IV. 부록</title>
-  <style>
-    /* 기본 스타일 */
+<style>
     .footer-links-responsive {
       display: flex;
       justify-content: flex-end;
-      gap: 1.5em;
       font-size: 1em;
       opacity: 0.4;
       padding-right: 2em;
       flex-wrap: wrap;
+    }
+    
+    .footer-links-responsive span {
+      margin-left: 1.5em;
     }
     
     /* 모바일 반응형 */
@@ -19,7 +21,15 @@
       .footer-links-responsive {
         flex-direction: column-reverse;
         align-items: flex-end;
-        gap: 0.3em;
+      }
+      
+      .footer-links-responsive span {
+        margin-left: 0;
+        margin-bottom: 0.3em;
+      }
+      
+      .footer-links-responsive span:last-child {
+        margin-bottom: 0;
       }
     }
   </style>
