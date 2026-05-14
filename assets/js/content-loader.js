@@ -468,10 +468,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
 
                         // 오디오 플레이어 초기화 (챕터1 페이지들)
-                        if (contentId === 'prologue' || contentId === 'chapter1' || 
-                            contentId === 'chapter2' || contentId === 'chapter3' || 
-                            contentId === 'chapter4' || contentId === 'chapter5') {
-                            setTimeout(initAudioPlayer, 100);
+                        if (
+                          contentId === 'chapter0-overview' ||
+                          contentId === 'prologue' ||
+                          contentId === 'chapter1' ||
+                          contentId === 'chapter2' ||
+                          contentId === 'chapter3' ||
+                          contentId === 'chapter4' ||
+                          contentId === 'chapter5'
+                        ) {
+                          setTimeout(initAudioPlayer, 100);
                         }
                     }, 500);
 
