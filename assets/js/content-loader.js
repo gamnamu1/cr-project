@@ -603,17 +603,25 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 버튼 ID에 따라 해당 오디오 요소 ID 결정
             if (buttonId === 'audio-toggle') {
-                audioId = 'prologue-audio';
+              audioId = 'prologue-audio';
+            
+            } else if (buttonId === 'audio-toggle-declaration') {
+              audioId = 'declaration-audio';
+            
             } else if (buttonId === 'audio-toggle-ch1') {
-                audioId = 'chapter1-audio';
+              audioId = 'chapter1-audio';
+            
             } else if (buttonId === 'audio-toggle-ch2') {
-                audioId = 'chapter2-audio';
+              audioId = 'chapter2-audio';
+            
             } else if (buttonId === 'audio-toggle-ch3') {
-                audioId = 'chapter3-audio';
+              audioId = 'chapter3-audio';
+            
             } else if (buttonId === 'audio-toggle-ch4') {
-                audioId = 'chapter4-audio';
+              audioId = 'chapter4-audio';
+            
             } else if (buttonId === 'audio-toggle-ch5') {
-                audioId = 'chapter5-audio';
+              audioId = 'chapter5-audio';
             }
             
             const audio = document.getElementById(audioId);
